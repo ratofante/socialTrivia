@@ -7,30 +7,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col" colspan="4">{{ $pregunta->pregunta }}</th>
+                <th scope="col" colspan="4">{{ $pregunta['pregunta'] }}</th>
             </tr>
         </thead>
         <tbody>
+            @foreach ($pregunta['opciones'] as $opciones)
             <tr>
                 <td>
-                    {{ $pregunta->respuesta }}
+                    {{ $opciones['texto'] }}
                 </td>
             </tr>
-            <tr>
-                <td>
-                    {{ $pregunta->opcion_1 }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ $pregunta->opcion_2 }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ $pregunta->opcion_3 }}
-                </td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
     @endforeach

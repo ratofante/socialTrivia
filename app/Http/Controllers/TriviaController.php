@@ -13,6 +13,11 @@ class TriviaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public $trivia = [];
+
+
     public function index()
     {
         //3 PREGUNTAS RANDOM CON SELECT
@@ -22,17 +27,9 @@ class TriviaController extends Controller
             ->get()
             ->toArray();
 
-        //10 PREGUNTAS RANDOM FUNCIONA 
-        /*$preguntas = Trivia::all()
-            ->random(10)
-            ->toArray();
-        var_dump($preguntas);    
-        */
+        $preguntas = $this->sortearOpciones($preguntas);
 
-        //Select ALL from trivia FUNCIONA
-        /*$preguntas = DB::table('trivia')->get();
-        */
-        var_dump($preguntas);
+        //var_dump($preguntas);
         return view('trivia.trivia', [
             'preguntas' => $preguntas
         ]);
@@ -102,5 +99,42 @@ class TriviaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /******************
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+    public function sortearOpciones($preguntas)
+    {
+        for($i=0; $i<count($preguntas); $i++)
+        {
+            $this->trivia[$i] = array(
+                'pregunta' => $preguntas[$i]['pregunta'],
+                'opciones' => array(
+                    'opcion_1' => array(
+                        'texto' => $preguntas[$i]['respuesta'],
+                        'valor' => true
+                    ),
+                    'opcion_2' => array(
+                        'texto' => $preguntas[$i]['opcion_1'],
+                        'valor' => false
+                    ),
+                    'opcion_3' => array (
+                        'texto' => $preguntas[$i]['opcion_2'],
+                        'valor' => false
+                    ),
+                    'opcion_4' => array (
+                        'texto' => $preguntas[$i]['opcion_3'],
+                        'valor' => false
+                    )
+                )
+            );
+            shuffle($this->trivia[$i]['opciones']);
+        } 
+        return $this->trivia;      
     }
 }
