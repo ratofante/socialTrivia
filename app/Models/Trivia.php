@@ -9,7 +9,7 @@ class Trivia extends Model
 {
     use HasFactory;
 
-    protected $table = 'social_trivia';
+    protected $table = 'trivia';
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $dateFormat = 'Y-m-d H:i:s';

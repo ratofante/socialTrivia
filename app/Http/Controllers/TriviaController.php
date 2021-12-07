@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Trivia;
 
 class TriviaController extends Controller
 {
@@ -14,9 +15,26 @@ class TriviaController extends Controller
      */
     public function index()
     {
-        $trivia = DB::table('trivia')->get();
+        //3 PREGUNTAS RANDOM CON SELECT
+        $preguntas = Trivia::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
+            ->inRandomOrder()
+            ->limit(3)
+            ->get()
+            ->toArray();
+
+        //10 PREGUNTAS RANDOM FUNCIONA 
+        /*$preguntas = Trivia::all()
+            ->random(10)
+            ->toArray();
+        var_dump($preguntas);    
+        */
+
+        //Select ALL from trivia FUNCIONA
+        /*$preguntas = DB::table('trivia')->get();
+        */
+        var_dump($preguntas);
         return view('trivia.trivia', [
-            'trivia' => $trivia
+            'preguntas' => $preguntas
         ]);
     }
 

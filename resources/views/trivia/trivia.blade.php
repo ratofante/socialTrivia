@@ -3,7 +3,7 @@
 @section('content')
     
 <div class="container m-auto p-2">
-    @foreach ($trivia as $pregunta)
+    @foreach ($preguntas as $pregunta)
     <table class="table">
         <thead>
             <tr>
