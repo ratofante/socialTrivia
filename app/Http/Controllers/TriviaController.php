@@ -20,18 +20,19 @@ class TriviaController extends Controller
 
     public function index()
     {
-        //3 PREGUNTAS RANDOM CON SELECT
+        //10 PREGUNTAS RANDOM CON SELECT
+        $totalPreguntas = 10;
         $preguntas = Trivia::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
             ->inRandomOrder()
-            ->limit(3)
+            ->limit($totalPreguntas)
             ->get()
             ->toArray();
 
-        $preguntas = $this->sortearOpciones($preguntas);
+        $trivia = $this->setTrivia($preguntas, $totalPreguntas);
 
         //var_dump($preguntas);
         return view('trivia.trivia', [
-            'preguntas' => $preguntas
+            'trivia' => $trivia
         ]);
     }
 
@@ -102,13 +103,13 @@ class TriviaController extends Controller
     }
 
     /******************
-     * 
-     * 
+     * Uso interno en el controlador.
+     * Recibe 
      * 
      * 
      * 
      */
-    public function sortearOpciones($preguntas)
+    public function setTrivia($preguntas, $totalPreguntas)
     {
         for($i=0; $i<count($preguntas); $i++)
         {
@@ -134,7 +135,11 @@ class TriviaController extends Controller
                 )
             );
             shuffle($this->trivia[$i]['opciones']);
-        } 
+        }
+        $this->trivia['totalPreguntas'] = $totalPreguntas;
+        $this->trivia['resultado'] = 0;
+        $this->trivia['conteo'] = 0;
+
         return $this->trivia;      
     }
 }

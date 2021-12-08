@@ -1,0 +1,44 @@
+.button-box {
+    @include gradient;
+    padding:1rem;
+}
+
+.btn-square {
+    width: 100%;
+    padding: 1rem;
+    background-color: $white;
+    border: .1rem solid $black;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    a {
+        height:auto;
+        width:100%;
+        color: $black;
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    span {
+        position:absolute;
+        right: 35px;
+        i {
+            font-size: 1.8rem;
+        }
+    }
+    &:hover {
+        @include gradient;
+        a {
+            color: $white;
+        }
+        i {
+            font-size: 1.9rem;
+            color: $white;
+        }
+
+    }
+
+    
+}

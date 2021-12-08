@@ -2,23 +2,46 @@
 
 @section('content')
 
-<div class="container">
+<div class="container button-box">
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center">
-            <button class="rounded-pill m-auto p-3">
+            <button type="button" class="btn-square">
                 <a href="/trivia">
                     Jugar
                 </a>
-                <span class="">
-
+                <span>
+                    <i class="bi bi-arrow-right-circle fa-4x"></i>
                 </span>
             </button>
         </div>
         <div class="col-md-6 d-flex justify-content-center">
-            <button class="rounded-pill m-auto p-3">
-                <a href="/usuarios">
-                    Loggin
+            <button type="button" class="btn-square">
+                <a href="">
+                    Podio
                 </a>
+                <span>
+                    <i class="bi bi-arrow-right-circle"></i>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <button type="button" class="btn-square">
+                <a href="">
+                    Registrarse
+                </a>
+                <span>
+                    <i class="bi bi-arrow-right-circle"></i>
+                </span>
+            </button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <button type="button" class="btn-square">
+                <a href="">
+                    Información
+                </a>
+                <span>
+                    <i class="bi bi-arrow-right-circle"></i>
+                </span>
             </button>
         </div>
     </div>

@@ -5,7 +5,8 @@
 @import 'variables';
 
 // Components
-@import '/components/buttons.scss';
+@import 'components/mixins.scss';
+@import 'components/buttons.scss';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

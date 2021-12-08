@@ -1,28 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
+
+<div class="container m-auto p2">
+    <p class="conteo">
+        Pregunta {{ $trivia['conteo']+1 }} de {{ $trivia['totalPreguntas'] }}
+    </p>
+</div>
 <div class="container m-auto p-2">
-    @foreach ($preguntas as $pregunta)
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col" colspan="4">{{ $pregunta['pregunta'] }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($pregunta['opciones'] as $opciones)
-            <tr>
-                <td>
-                    {{ $opciones['texto'] }}
-                </td>
-            </tr>
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">
+            {{ $trivia[$trivia['conteo']]['pregunta'] }}
+          </label>
+          <select multiple class="form-control" id="exampleFormControlSelect2">
+            @foreach ($trivia[$trivia['conteo']]['opciones'] as $opcion)
+            <option>{{ $opcion['texto'] }}</option>  
             @endforeach
-        </tbody>
-    </table>
-    @endforeach
+          </select>
+        </div>
+      </form>
 </div>
 
 
 
 @endsection
+

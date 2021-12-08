@@ -15,7 +15,7 @@ class Trivia extends Model
     protected $dateFormat = 'Y-m-d H:i:s';
     protected $fillable = ['pregunta', 'respuesta', 'opcion_1', 'opcion_2', 'opcion_3', 'categoria'];
     protected $hidden = ['id'];
-    public $trivia = [];
+    //public $trivia = [];
 
 
     /***********************
@@ -29,35 +29,5 @@ class Trivia extends Model
      * salga en un lugar cualquiera.
      * 
      */
-
-    /*
-    public function sortearOpciones($preguntas)
-    {
-        for($i=0; $i<count($preguntas); $i++)
-        {
-            $this->trivia[$i] = array(
-                'pregunta' => $preguntas[$i]['pregunta'],
-                'opciones' => array(
-                    'opcion_1' => array(
-                        'texto' => $preguntas[$i]['respuesta'],
-                        'valor' => true
-                    ),
-                    'opcion_1' => array(
-                        'texto' => $preguntas[$i]['opcion_1'],
-                        'valor' => false
-                    ),
-                    'opcion_2' => array (
-                        'texto' => $preguntas[$i]['opcion_2'],
-                        'valor' => false
-                    ),
-                    'opcion_3' => array (
-                        'texto' => $preguntas[$i]['opcion_3'],
-                        'valor' => false
-                    )
-                )
-            );
-            shuffle($this->trivia[$i]['opciones']);
-        }       
-    }
-    */
+    
 }
