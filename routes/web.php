@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TriviaController;
-
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,26 @@ use App\Http\Controllers\TriviaController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-
 Route::resource('/trivia', TriviaController::class);
+
+Route::get('/inicio', function () {
+    return view('sesiones.inicio');
+});//->middleware('auth');
+
+Route::get('/inicio/register', [RegisterController::class, 'create2'])
+//->middleware('guest')
+->name('register.index');
+
+Route::post('/inicio/register', [RegisterController::class, 'store'])
+->name('register.store');
+
+Route::get('/inicio/login', [SessionController::class, 'create2'])
+//->middleware('guest')
+->name('login.index');
+
+Route::post('/inicio/login', [SessionController::class, 'store'])
+->name('login.store');
+
+Route::get('/inicio/logout', [SessionController::class, 'destroy'])
+//->middleware('auth')
+->name('login.destroy');
