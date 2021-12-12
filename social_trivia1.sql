@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2021 a las 00:34:29
+-- Tiempo de generación: 06-12-2021 a las 23:14:51
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -54,11 +54,11 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(11, '2014_10_12_000000_create_users_table', 1),
-(12, '2014_10_12_100000_create_password_resets_table', 1),
-(13, '2019_08_19_000000_create_failed_jobs_table', 1),
-(14, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(15, '2021_12_06_204127_create_trivia_table', 1);
+(6, '2014_10_12_000000_create_users_table', 1),
+(7, '2014_10_12_100000_create_password_resets_table', 1),
+(8, '2019_08_19_000000_create_failed_jobs_table', 1),
+(9, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(10, '2021_12_06_204127_create_trivia_table', 1);
 
 -- --------------------------------------------------------
 
@@ -89,37 +89,6 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `podio`
---
-
-CREATE TABLE `podio` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `resultado` int(11) NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `podio`
---
-
-INSERT INTO `podio` (`id`, `username`, `resultado`, `fecha`) VALUES
-(0, 'Rodrigo', 10, '0000-00-00'),
-(1, 'lucasosa', 3, '0000-00-00'),
-(2, 'sddasdas', 2, '0000-00-00'),
-(3, 'sadajsdk', 7, '0000-00-00'),
-(4, 'asdasdas', 7, '1990-03-04'),
-(5, 'kfjaksjd', 7, '1910-05-06'),
-(6, 'juancito', 9, '2002-06-02'),
-(8, 'ramon', 4, '1780-06-22'),
-(9, 'lituania', 10, '1990-04-05'),
-(10, 'armenia', 10, '2000-06-05'),
-(11, 'taiwan', 6, '1778-07-03'),
-(12, 'argentina', 8, '1993-03-04');
 
 -- --------------------------------------------------------
 
@@ -209,14 +178,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'popo', 'popo@popo.com', NULL, 'popo', NULL, '2021-12-13 02:05:59', '2021-12-13 02:05:59'),
-(2, 'bobo', 'bobo@bobo.com', NULL, 'ca2cd2bcc63c4d7c8725577442073dde', NULL, '2021-12-13 02:16:43', '2021-12-13 02:16:43');
-
---
 -- Índices para tablas volcadas
 --
 
@@ -248,12 +209,6 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indices de la tabla `podio`
---
-ALTER TABLE `podio`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `trivia`
 --
 ALTER TABLE `trivia`
@@ -280,7 +235,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -298,7 +253,7 @@ ALTER TABLE `trivia`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
