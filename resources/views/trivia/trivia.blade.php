@@ -9,18 +9,36 @@
     </p>
 </div>
 <div class="container m-auto p-2">
-    <form>
+    <form action="/trivia" method="POST" id="triviaForm">
+      @csrf
         <div class="form-group">
+
           <label for="exampleFormControlSelect2">
             {{ $trivia[$trivia['conteo']]['pregunta'] }}
           </label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
+
+          <select name="respuesta" form="triviaForm" multiple class="form-control" id="exampleFormControlSelect2">
+
             @foreach ($trivia[$trivia['conteo']]['opciones'] as $opcion)
-            <option>{{ $opcion['texto'] }}</option>  
+
+            <option value="{{ $opcion['texto'] }}">{{ $opcion['texto'] }}</option> 
+
             @endforeach
+
           </select>
+
         </div>
+        <div class="container m-auto p-2">
+          <button type="submit p-3 bg-secondary">
+              Respuesta
+          </button>
+        </div>  
       </form>
+
+      <div class="container">
+        <p>n° respuestas correctas: {{ $trivia['resultado'] }}</p>
+      </div>
+  
 </div>
 
 
