@@ -17,7 +17,6 @@ class TriviaController extends Controller
 
     public $trivia = [];
 
-
     public function index()
     {
         if(Session::get('trivia') !== null)
@@ -47,6 +46,7 @@ class TriviaController extends Controller
         
         Session::put('trivia', $this->setTrivia($preguntas, $totalPreguntas));
 
+        //var_dump(session('trivia'));
         //var_dump(session('trivia'));
         return view('trivia.trivia', [
             'trivia' => session('trivia')
@@ -81,22 +81,42 @@ class TriviaController extends Controller
     public function store(Request $request)
     {
 
+        // Obtenemos la trivia guardada en Session
         $trivia = Session::get('trivia');
-        $respuesta = $request->input('respuesta');
-        $conteo = $trivia['conteo'];
 
-        var_dump($trivia[$conteo]['opciones']);
-        foreach($trivia[$conteo]['opciones'] as $opcion)
+        // Obetenemos el input/respuesta del usuario
+        $respuestaUsuario = $request->input('respuesta');
+
+        // Usamos 'conteo' para ubicar el index correspondiente
+        $i = $trivia['conteo'];
+
+        // recorremos las opciones para ubicar la respuesta correcta
+        foreach($trivia[$i]['opciones'] as $opcion)
         {
-            if($opcion['texto'] == $respuesta)
-            {
-                if($opcion['valor'] === true)
+            if ($opcion['valor'] === true) {
+
+                $respuestaCorrecta = $opcion['texto'];
+
+                //Chequeamos si la respuesta del usuario es correcta
+                // Si es correcta, +1 a resultado
+                // Si no es correcta, creamos un array-registro y lo guardamos en sumario.
+                if($respuestaUsuario === $respuestaCorrecta)
                 {
                     $trivia['resultado'] += 1;
+                }
+                else
+                {
+                    $registro = array(
+                        'pregunta' => $trivia[$i]['pregunta'],
+                        'input' => $respuestaUsuario,
+                        'respuesta' => $respuestaCorrecta
+                    );
+                    array_push($trivia['sumario'], $registro);
                 }
             }
         }
 
+        // sumamos +1 a conteo, volvemos a guardar trivia, mandamos siguiente pregunta.
         $trivia['conteo']++;
         Session::put('trivia', $trivia);
         
@@ -185,6 +205,7 @@ class TriviaController extends Controller
         $this->trivia['totalPreguntas'] = $totalPreguntas;
         $this->trivia['resultado'] = 0;
         $this->trivia['conteo'] = 0;
+        $this->trivia['sumario'] = [];
 
         return $this->trivia;      
     }

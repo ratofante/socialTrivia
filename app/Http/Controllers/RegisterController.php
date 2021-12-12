@@ -13,7 +13,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store()
+    public function store(Request $request)
     {
        /* $this->validate(request(),[
             'name'=>'required',
@@ -21,7 +21,17 @@ class RegisterController extends Controller
             'password'=>'required|confirmed'
         ]
         );*/
-        $user =  User::create(request(['name', 'email', 'password']));
+        $pass = md5($request->input('password'));
+        $email = $request->input('email');
+        $name = $request->input('name');
+
+        $user = User::create([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'password'=>md5($request->input('password'))
+        ]);
+
+        //$user =  User::create(request(['name', 'email', 'password']));
         Auth()->login($user);
         return redirect()->to('/inicio');
     }

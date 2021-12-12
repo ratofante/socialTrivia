@@ -14,13 +14,12 @@
         <div class="form-group">
 
           <label for="exampleFormControlSelect2">
-            {{ $trivia[$trivia['conteo']]['pregunta'] }}
+           {{ $trivia[$trivia['conteo']]['pregunta'] }}
           </label>
-
           <select name="respuesta" form="triviaForm" multiple class="form-control" id="exampleFormControlSelect2">
 
             @foreach ($trivia[$trivia['conteo']]['opciones'] as $opcion)
-
+            <!-- opcion texto -->
             <option value="{{ $opcion['texto'] }}">{{ $opcion['texto'] }}</option> 
 
             @endforeach
@@ -29,7 +28,7 @@
 
         </div>
         <div class="container m-auto p-2">
-          <button type="submit p-3 bg-secondary">
+          <button type="submit" class="p-3 bg-secondary">
               Respuesta
           </button>
         </div>  

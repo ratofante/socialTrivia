@@ -3,13 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TriviaController;
-<<<<<<< HEAD
 use App\Http\Controllers\PodioController;
-
-=======
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
->>>>>>> 39e36829735fcf35a8f2d2153b9e450be989cfd2
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +21,6 @@ use App\Http\Controllers\SessionController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-<<<<<<< HEAD
-Route::resource('/trivia', TriviaController::class);
-
-Route::resource('/podio', PodioController::class);
-=======
 /**
  * Routes /inicio
  * Crear / registrar usuario
@@ -62,4 +54,5 @@ Route::get('/inicio/logout', [SessionController::class, 'destroy'])
  * 
  */
 Route::resource('/trivia', TriviaController::class);
->>>>>>> 39e36829735fcf35a8f2d2153b9e450be989cfd2
+
+Route::resource('/podio', PodioController::class);

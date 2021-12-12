@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-6 d-flex justify-content-center">
             <button type="button" class="btn-square">
-                <a href="">
+                <a href="/podio">
                     Podio
                 </a>
                 <span>
