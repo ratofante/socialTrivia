@@ -1,5 +1,5 @@
-@extends('layouts.app2')
-@section('title', 'inicio')
-@section('content2')
-<h1>Bienvenido/a </b></h1>   
+@extends('layouts.app')
+@section('title', 'Inicio - Social Trivia')
+@section('content')
+<h1>Bienvenido/a</h1>
 @endsection

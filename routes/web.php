@@ -19,7 +19,10 @@ use App\Http\Controllers\SessionController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::resource('/trivia', TriviaController::class);
+/**
+ * Routes /inicio
+ * Crear / registrar usuario
+ */
 
 Route::get('/inicio', function () {
     return view('sesiones.inicio');
@@ -42,3 +45,10 @@ Route::post('/inicio/login', [SessionController::class, 'store'])
 Route::get('/inicio/logout', [SessionController::class, 'destroy'])
 //->middleware('auth')
 ->name('login.destroy');
+
+/****
+ * 
+ * Routes Trivia
+ * 
+ */
+Route::resource('/trivia', TriviaController::class);
