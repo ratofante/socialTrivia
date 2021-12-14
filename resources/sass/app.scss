@@ -3,6 +3,10 @@
 
 // Variables
 @import 'variables';
+@import 'general';
+
+// Components
+@import 'components/buttons.scss';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

@@ -1,44 +1,18 @@
-.button-box {
-    @include gradient;
-    padding:1rem;
-}
-
-.btn-square {
-    width: 100%;
-    padding: 1rem;
-    background-color: $white;
-    border: .1rem solid $black;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.btn-custom {
+    padding: 0.4rem 0.2rem;
+    margin: 1rem;
+    border-radius: 4px;
+    width: 150px;
     a {
-        height:auto;
-        width:100%;
-        color: $black;
+        font-size: 1.2rem;
         text-decoration: none;
-        font-size: 2rem;
-        font-weight: 700;
     }
-    span {
-        position:absolute;
-        right: 35px;
-        i {
-            font-size: 1.8rem;
-        }
-    }
-    &:hover {
-        @include gradient;
-        a {
-            color: $white;
-        }
-        i {
-            font-size: 1.9rem;
-            color: $white;
-        }
-
+}
+.link-btn {
+    background-color: $gray-500;
+    a {
+        text-decoration: none;
+        color: $white;
     }
 
-    
 }

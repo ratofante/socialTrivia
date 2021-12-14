@@ -6,7 +6,6 @@ use App\Http\Controllers\TriviaController;
 use App\Http\Controllers\PodioController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +18,10 @@ use App\Http\Controllers\PodioController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/about', [HomeController::class, 'about']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
 
 Route::resource('/trivia', TriviaController::class);
 
@@ -26,6 +29,4 @@ Route::resource('/podio', PodioController::class);
 
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
