@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center">
             <button type="button" class="btn-square">
-                <a href="/trivia">
+                <a href="">
                     Jugar
                 </a>
                 <span>
