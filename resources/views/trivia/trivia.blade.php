@@ -2,45 +2,50 @@
 
 @section('content')
 
-
-<div class="container m-auto p2">
-    <p class="conteo">
-        Pregunta {{ $trivia['conteo']+1 }} de {{ $trivia['totalPreguntas'] }}
-    </p>
-</div>
-<div class="container m-auto p-2">
-    <form action="/trivia" method="POST" id="triviaForm">
+<div class="container m-auto mt-5 p-2">
+    <form action="/trivia" method="POST" id="triviaForm" class="card">
       @csrf
-        <div class="form-group">
+        <div class="form-group card-body pb-0">
 
-          <label for="exampleFormControlSelect2">
-           {{ $trivia[$trivia['conteo']]['pregunta'] }}
-          </label>
-          <select name="respuesta" form="triviaForm" multiple class="form-control" id="exampleFormControlSelect2">
+          <p>Pregunta {{ $trivia['conteo']+1 }} de {{ $trivia['totalPreguntas'] }}</p>
+          
+          <div class="card-header">
+            <label for="exampleFormControlSelect2">
 
-            @foreach ($trivia[$trivia['conteo']]['opciones'] as $opcion)
-            <!-- opcion texto -->
-            <option value="{{ $opcion['texto'] }}">{{ $opcion['texto'] }}</option> 
+              <h4 class="text-center w-100 mb-0">{{ $trivia[$trivia['conteo']]['pregunta'] }} </h4>
+             </label>
+          </div>
+            
+          
+          
+          <div class="card-body px-1">
+            <select name="respuesta" form="triviaForm" multiple class="form-control" id="exampleFormControlSelect2">
 
-            @endforeach
-
-          </select>
+              @foreach ($trivia[$trivia['conteo']]['opciones'] as $opcion)
+              <!-- opcion texto -->
+              <option value="{{ $opcion['texto'] }}">{{ $opcion['texto'] }}</option> 
+  
+              @endforeach
+  
+            </select>
+          </div>
+          
 
         </div>
-        <div class="container m-auto p-2">
-          <button type="submit" class="p-3 bg-secondary">
-              Respuesta
+        <div class="container w-100 d-flex justify-content-center p-2">
+          <button type="submit" class="btn-custom p-1 bg-gray-500">
+              Responder
           </button>
-        </div>  
+        </div>
+        <div class="container">
+          <p class="mb-1 text-left">n° respuestas correctas: {{ $trivia['resultado'] }}</p>
+        </div>
       </form>
 
-      <div class="container">
-        <p>n° respuestas correctas: {{ $trivia['resultado'] }}</p>
-      </div>
+      
   
 </div>
 
 
 
 @endsection
-

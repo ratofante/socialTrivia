@@ -81,7 +81,6 @@
     </div>
     <footer>
             <div class="card">
-
                 <div class="card-footer text-muted">
                     Footer
                 </div>

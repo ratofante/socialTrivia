@@ -12,6 +12,12 @@ body {
   justify-content: center;
 }
 
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+
 .btn-custom {
   padding: 0.4rem 0.2rem;
   margin: 1rem;
