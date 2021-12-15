@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="wrapper">
-    <div class="container button-box mt-3">
+
+    <div class="container button-box mt-5">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
                 <!-- Button trigger modal -->
@@ -90,6 +90,6 @@
             </div>
         </div>
     </div>
-</div>
+
 
 @endsection

@@ -14,17 +14,12 @@ class PodioController extends Controller
      */
     public function index()
     {
-        $podios= DB::select("SELECT * FROM podio order by resultado DESC, fecha ASC");
-        $parametro=[
-            // "primer_puesto"=>$podios[0],
-            // "segundo_puesto"=>$podios[1],
-            // "tercer_puesto"=>$podios[2],
-            // "cuarto_puesto"=>$podios[3],
-            // "quinto_puesto"=>$podios[4],
-            "podio"=>$podios,
-            "titulo"=>"Podio Oficial"
-        ];
-        return view('podio.podio',$parametro);
+        $podio= DB::select("SELECT * FROM podio order by resultado DESC, fecha ASC");
+        
+        return view('podio.podio',[
+            'podio' => $podio,
+            'titulo' => 'Podio'
+        ]);
     }
 
     /**
