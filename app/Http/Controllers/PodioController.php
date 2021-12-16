@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Podio;
 use Illuminate\Support\Facades\DB;
 
 class PodioController extends Controller
@@ -14,8 +15,12 @@ class PodioController extends Controller
      */
     public function index()
     {
-        $podio= DB::select("SELECT * FROM podio order by resultado DESC, fecha ASC");
-        
+        $podio = Podio::select('username', 'resultado', 'created_at')
+                    ->limit(5)
+                    ->orderBy('resultado', 'desc')
+                    ->orderBy('created_at', 'asc')
+                    ->get();
+
         return view('podio.podio',[
             'podio' => $podio,
             'titulo' => 'Podio'
@@ -51,7 +56,16 @@ class PodioController extends Controller
      */
     public function show($id)
     {
-        //
+        $podio = Podio::select('username', 'resultado', 'created_at')
+                    ->where('id', '=', $id)
+                    ->orderBy('resultado', 'desc')
+                    ->orderBy('created_at', 'asc')
+                    ->get();
+
+        return view('podio.podio',[
+            'podio' => $podio,
+            'titulo' => 'Podio'
+        ]);
     }
 
     /**

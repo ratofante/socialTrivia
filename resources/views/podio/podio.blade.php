@@ -2,27 +2,29 @@
 
 @section('content')
 <div class="container">
-    <h1>{{$titulo}}</h1>
-    <table class="table">
-        <thead class="thead bg-light">
+    <h1 class="text-center mb-3 font-weight-bolder">{{$titulo}}</h1>
+    <table class="table podio-table">
+        <thead class="thead bg-custom-dark">
             <tr>
                 <th scope="col" class="text-center">Posición</th>
                 <th scope="col" class="text-center">Usuario</th>
                 <th scope="col" class="text-center">Resultado</th>
-                <th scope="col" class="text-center">Fecha</th>
+                <th scope="col" class="text-center d-none d-sm-block">Fecha</th>
             </tr>
         </thead>
         <tbody>
-            @for ($i = 0; $i < 5; $i++)
-            <tr>
-                <th scope="row">{{$i+1}}</th>
-                <td>{{$podio[$i]->username}}</td>
-                <td class="text-center">{{$podio[$i]->resultado}}</td>
-                <td>{{$podio[$i]->fecha}}</td>
+            @php ($i=1)
+            @foreach ($podio as $score)
+            <tr class="bg-custom-light">
+                <th class="text-md-center" scope="row">{{$i}}</th>
+                <td>{{$score->username}}</td>
+                <td class="text-center">{{$score->resultado}}</td>
+                <td class="text-center d-none d-sm-block">{{$score->created_at}}</td>
             </tr>
-            @endfor
+            @php ($i++)
+            @endforeach
         </tbody>
     </table>
 </div>
-    
+
 @endsection

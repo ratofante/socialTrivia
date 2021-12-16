@@ -6,6 +6,11 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
+// MY COLORS
+$custom-light: #faf3ed;
+$custom-dark: #dfcdbc;
+
+
 // COLORS
 $white:    #fff;
 $gray-100: #f8f9fa;
@@ -30,8 +35,8 @@ $green:   #198754;
 $teal:    #20c997;
 $cyan:    #0dcaf0;
 
-$primary:       $blue;
-$secondary:     $gray-600;
+$primary:       $custom-light;
+$secondary:     $custom-dark;
 $success:       $green;
 $info:          $cyan;
 $warning:       $yellow;
