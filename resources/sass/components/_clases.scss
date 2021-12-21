@@ -1,6 +1,20 @@
 .bg-custom-light {
-    background-color: $custom-light;
+    background-color: $custom-light !important;
 }
 .bg-custom-dark {
-    background-color: $custom-dark;
+    background-color: $custom-dark !important;
+}
+.custom-bold {
+    color: #643203;
+    font-weight: 600;
+}
+.custom-hoover {
+    &:hoover {
+        @include hoover-text;
+    }
+}
+.resultado {
+    @include box-shadow;
+    margin: 2rem auto;
+    padding: 0px !important;
 }

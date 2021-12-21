@@ -1,4 +1,42 @@
 
+@mixin box-shadow {
+    box-shadow: 0px 0px 4px #574043;
+}
+@mixin hoover-text {
+    color: #4e749d;
+    font-weight: 600;
+}
 
 
- 
+// Media Queries
+
+@mixin small-mobile {
+    @media (max-width:576px) {
+        @content;
+    }
+}
+@mixin medium-mobile {
+    @media (min-width: 575px) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: 760px) {
+        @content;
+    }
+}
+@mixin square-pc {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+@mixin notebook {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+@mixin wide-pc {
+    @media (min-width: 1400px) {
+        @content;
+    }
+}

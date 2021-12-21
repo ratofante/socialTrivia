@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Podio;
-use Illuminate\Support\Facades\DB;
 
 class PodioController extends Controller
 {
@@ -45,7 +44,12 @@ class PodioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Podio::create([
+            'username' => $request->input('name'),
+            'resultado' => $request->input('resultado')
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -57,7 +61,7 @@ class PodioController extends Controller
     public function show($id)
     {
         $podio = Podio::select('username', 'resultado', 'created_at')
-                    ->where('id', '=', $id)
+                    ->where('user_id', '=', $id)
                     ->orderBy('resultado', 'desc')
                     ->orderBy('created_at', 'asc')
                     ->get();

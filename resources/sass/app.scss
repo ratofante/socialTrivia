@@ -4,14 +4,17 @@
 // Variables
 @import 'variables';
 @import 'general';
+@import 'components/mixins.scss';
 
 // Components
 @import 'components/clases.scss';
 @import 'components/buttons.scss';
-@import 'components/navbar.scss';
+
 
 // Views
+@import 'views/navbar';
 @import 'views/podio.scss';
+@import 'views/navbar.scss';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

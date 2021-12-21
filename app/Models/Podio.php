@@ -11,7 +11,14 @@ class Podio extends Model
 
     protected $table = 'podio';
     protected $primaryKey = 'id';
+
     public $timestamps = true;
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
+    protected $fillable = ['username', 'resultado'];
     protected $hidden = ['id', 'user_id'];
+
+    public function userModel()
+    {
+        return $this->hasMany(Users::class);
+    }
 }

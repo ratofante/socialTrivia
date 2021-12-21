@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trivia;
+use App\Models\Podio;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class TriviaController extends Controller
 {
@@ -19,48 +21,74 @@ class TriviaController extends Controller
 
     public function index()
     {
+
+        //var_dump(Session::get('trivia'));
+
         if(Session::get('trivia') !== null)
         {
             $trivia = Session::get('trivia');
 
-            if($trivia['conteo'] === 10)
+            //Chequeamos si el juego terminó (conteo = 10) o continua (conteo < 10)
+
+            if(isset($trivia['conteo']) && $trivia['conteo'] === 10)
             {
+                //Borramos la trivia de la sessión.
+
+                session()->forget('trivia');
+
+                // Insertamos el resultado en el podio para usuarios logueados.
+
+                if(Auth::check())
+                {
+                    Podio::insert([
+                        'user_id' => Auth::id(),
+                        'username' => Auth::user()->name,
+                        'resultado' => $trivia['resultado']
+                    ]);
+                }
+
+                // Devolvemos trivia.resultado con los datos del juego:
+
                 return view('trivia.resultado', [
-                    'trivia' => session('trivia')
-                ]);                
+                    'trivia' => $trivia
+                ]);
             }
-            if($trivia['conteo'] !== 0)
+            if(isset($trivia['conteo']) && $trivia['conteo'] !== 0)
             {
                 return view('trivia.trivia',[
                     'trivia' => session('trivia')
                 ]);
             }
         }
-        //10 PREGUNTAS RANDOM CON SELECT
-        $totalPreguntas = 10;
-        $preguntas = Trivia::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
-            ->inRandomOrder()
-            ->limit($totalPreguntas)
-            ->get()
-            ->toArray();
-        
-        Session::put('trivia', $this->setTrivia($preguntas, $totalPreguntas));
 
-        //var_dump(session('trivia'));
-        //var_dump(session('trivia'));
-        return view('trivia.trivia', [
-            'trivia' => session('trivia')
-        ]);
+
+            //10 PREGUNTAS RANDOM CON SELECT
+
+            $totalPreguntas = 10;
+            $preguntas = Trivia::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
+                ->inRandomOrder()
+                ->limit($totalPreguntas)
+                ->get()
+                ->toArray();
+
+            // Iniciación de la Trivia.
+
+            Session::put('trivia', $this->setTrivia($preguntas, $totalPreguntas));
+
+            return view('trivia.trivia', [
+                'trivia' => session('trivia')
+            ]);
+
     }
 
     /*****
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
     public function check(Request $request)
     {
-        
+
     }
     /**
      * Show the form for creating a new resource.
@@ -119,7 +147,7 @@ class TriviaController extends Controller
         // sumamos +1 a conteo, volvemos a guardar trivia, mandamos siguiente pregunta.
         $trivia['conteo']++;
         Session::put('trivia', $trivia);
-        
+
         return redirect('/trivia');
     }
 
@@ -170,10 +198,10 @@ class TriviaController extends Controller
 
     /******************
      * Uso interno en el controlador.
-     * Recibe 
-     * 
-     * 
-     * 
+     * Recibe
+     *
+     *
+     *
      */
     public function setTrivia($preguntas, $totalPreguntas)
     {
@@ -207,6 +235,6 @@ class TriviaController extends Controller
         $this->trivia['conteo'] = 0;
         $this->trivia['sumario'] = [];
 
-        return $this->trivia;      
+        return $this->trivia;
     }
 }

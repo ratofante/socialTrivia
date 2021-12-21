@@ -17,7 +17,7 @@
             @foreach ($podio as $score)
             <tr class="bg-custom-light">
                 <th class="text-md-center" scope="row">{{$i}}</th>
-                <td>{{$score->username}}</td>
+                <td class="text-center">{{$score->username}}</td>
                 <td class="text-center">{{$score->resultado}}</td>
                 <td class="text-center d-none d-sm-block">{{$score->created_at}}</td>
             </tr>

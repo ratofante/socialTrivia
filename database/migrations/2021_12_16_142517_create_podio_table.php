@@ -15,9 +15,14 @@ class CreatePodioTable extends Migration
     {
         Schema::create('podio', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('username');
             $table->integer('resultado');
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

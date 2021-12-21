@@ -15,16 +15,27 @@ body {
 
 footer {
   width: 100%;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
 }
 
 .bg-custom-light {
-  background-color: #faf3ed;
+  background-color: #faf3ed !important;
 }
 
 .bg-custom-dark {
-  background-color: #dfcdbc;
+  background-color: #dfcdbc !important;
+}
+
+.custom-bold {
+  color: #643203;
+  font-weight: 600;
+}
+
+.resultado {
+  box-shadow: 0px 0px 4px #574043;
+  margin: 2rem auto;
+  padding: 0px !important;
 }
 
 .btn-custom {
@@ -46,11 +57,31 @@ footer {
   color: #fff;
 }
 
+.dropdown-menu-right {
+  left: -65px !important;
+}
+
 .podio-table {
   border: 0.08rem solid #be9e9052 !important;
+  margin: auto;
+  max-width: 650px;
+  box-shadow: 0px 0px 4px #574043;
 }
 .podio-table thead {
   border-style: hidden;
+}
+
+.acceso-podio {
+  color: black;
+  text-decoration: none;
+}
+.acceso-podio:hover {
+  color: #4e749d;
+  font-weight: 600;
+}
+
+.dropdown-menu-right {
+  left: -65px !important;
 }
 
 /*!
