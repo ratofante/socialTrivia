@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TriviaController;
 use App\Http\Controllers\PodioController;
-
+use App\Http\Controllers\SocialController;
+use App\Http\Controllers\BonusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Auth::routes();
 Route::resource('/trivia', TriviaController::class);
 
 Route::resource('/podio', PodioController::class);
+
+Route::resource('/social', SocialController::class);
+
+Route::post('/bonus', [BonusController::class, 'check']);
 
 
 

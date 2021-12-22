@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Podio;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Social;
 
-class PodioController extends Controller
+class SocialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +15,7 @@ class PodioController extends Controller
      */
     public function index()
     {
-        $podio = Podio::select('username', 'resultado', 'created_at')
-                    ->limit(10)
-                    ->orderBy('resultado', 'desc')
-                    ->orderBy('created_at', 'asc')
-                    ->get();
-
-        return view('podio.podio',[
-            'podio' => $podio,
-            'titulo' => 'Podio'
-        ]);
+        //
     }
 
     /**
@@ -33,7 +25,7 @@ class PodioController extends Controller
      */
     public function create()
     {
-        //
+        return view('social.compartir');
     }
 
     /**
@@ -44,12 +36,15 @@ class PodioController extends Controller
      */
     public function store(Request $request)
     {
-        Podio::create([
-            'username' => $request->input('name'),
-            'resultado' => $request->input('resultado')
+        Social::create([
+            'user_id' => Auth::user()->id,
+            'pregunta' => $request->input('pregunta'),
+            'respuesta' => $request->input('respuesta'),
+            'opcion_1' => $request->input('opcion_1'),
+            'opcion_2' => $request->input('opcion_2'),
+            'opcion_3' => $request->input('opcion_3')
         ]);
-
-        return redirect('/');
+        return view('home.index');
     }
 
     /**
@@ -60,16 +55,7 @@ class PodioController extends Controller
      */
     public function show($id)
     {
-        $podio = Podio::select('username', 'resultado', 'created_at')
-                    ->where('user_id', '=', $id)
-                    ->orderBy('resultado', 'desc')
-                    ->orderBy('created_at', 'asc')
-                    ->get();
-
-        return view('podio.podio',[
-            'podio' => $podio,
-            'titulo' => 'Podio'
-        ]);
+        //
     }
 
     /**

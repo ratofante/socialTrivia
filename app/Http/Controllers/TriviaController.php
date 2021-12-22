@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Trivia;
 use App\Models\Podio;
+use App\Models\Social;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,15 +19,61 @@ class TriviaController extends Controller
 
 
     public $trivia = [];
+    public $bonus = [];
 
     public function index()
     {
-
         //var_dump(Session::get('trivia'));
+
+        //Chequeamos si ya comenzó una partida.
 
         if(Session::get('trivia') !== null)
         {
             $trivia = Session::get('trivia');
+
+            if($trivia['bonus'] != false && $trivia['bonus']===$trivia['conteo'])
+            {
+                //Es un usuario logueado y llegó el momento del bonus.
+                //Se le comparte una pregunta de Socials para que responda y evalúe.
+
+                $pregunta = Social::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
+                ->inRandomOrder()
+                ->first()
+                ->get()
+                ->toArray();
+                $pregunta = $pregunta[0];
+
+
+                var_dump($pregunta);
+
+                $this->bonus['pregunta'] = $pregunta['pregunta'];
+                $this->bonus['opciones'] = array(
+                    'opcion1' => array(
+                        'texto' => $pregunta['respuesta'],
+                        'valor' => true
+                    ),
+                    'opcion2' => array(
+                        'texto' => $pregunta['opcion_1'],
+                        'valor' => false
+                    ),
+                    'opcion3' => array(
+                        'texto' => $pregunta['opcion_2'],
+                        'valor' => false
+                    ),
+                    'opcion4' => array(
+                        'texto' => $pregunta['opcion_3'],
+                        'valor' => false
+                    )
+                );
+
+                shuffle($this->bonus['opciones']);
+                Session::put('bonus', $this->bonus);
+
+                return view('trivia.bonus', [
+                    'bonus' => session('bonus'),
+                    'trivia' => session('trivia')
+                ]);
+            }
 
             //Chequeamos si el juego terminó (conteo = 10) o continua (conteo < 10)
 
@@ -41,11 +88,39 @@ class TriviaController extends Controller
                 if(Auth::check())
                 {
                     Podio::insert([
-                        'user_id' => Auth::id(),
+                        'user_id' => Auth::user()->id,
                         'username' => Auth::user()->name,
                         'resultado' => $trivia['resultado']
                     ]);
+
+                    switch (true) {
+                        case ($trivia['resultado'] === 0):
+                            $trivia['comentario'] = "Uy! Solo esperamos que haya sido un error. Vuelve a intentarlo";
+                            $trivia['premio'] = false;
+                            break;
+                        case ($trivia['resultado'] <= 3):
+                            $trivia['comentario'] = "Muy mal. Pero por algo se comienza. Revisa tus respuestas y quizás aprendas algo más";
+                            $trivia['premio'] = false;
+                            break;
+                        case ($trivia['resultado'] <= 5);
+                            $trivia['comentario'] = "Mediocre. Pero vemos esperanzas en que puedas mejorar";
+                            $trivia['premio'] = false;
+                            break;
+                        case ($trivia['resultado'] <= 6);
+                            $trivia['comentario'] = "No es muy buen resultado pero con un poco de práctica puedes mejorar";
+                            $trivia['premio'] = false;
+                            break;
+                        case ($trivia['resultado'] <= 8);
+                            $trivia['comentario'] = "Bien! Estás acercándote a los mejores resultados. No pares ahora!";
+                            $trivia['premio'] = false;
+                            break;
+                        case ($trivia['resultado'] <= 10);
+                            $trivia['comentario'] = "Excelente! Queremos que compartas tu sabiduría con nosotros.";
+                            $trivia['premio'] = true;
+                            break;
+                    }
                 }
+
 
                 // Devolvemos trivia.resultado con los datos del juego:
 
@@ -60,8 +135,6 @@ class TriviaController extends Controller
                 ]);
             }
         }
-
-
             //10 PREGUNTAS RANDOM CON SELECT
 
             $totalPreguntas = 10;
@@ -134,6 +207,7 @@ class TriviaController extends Controller
                 }
                 else
                 {
+                    $trivia['resultado'] -= 0.25;
                     $registro = array(
                         'pregunta' => $trivia[$i]['pregunta'],
                         'input' => $respuestaUsuario,
@@ -233,6 +307,14 @@ class TriviaController extends Controller
         $this->trivia['totalPreguntas'] = $totalPreguntas;
         $this->trivia['resultado'] = 0;
         $this->trivia['conteo'] = 0;
+        if(Auth::check() === true)
+        {
+            $this->trivia['bonus'] = rand(5,9);
+        }
+        else
+        {
+            $this->trivia['bonus'] = false;
+        }
         $this->trivia['sumario'] = [];
 
         return $this->trivia;

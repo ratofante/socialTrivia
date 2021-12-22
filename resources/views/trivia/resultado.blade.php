@@ -8,7 +8,9 @@
         <h4 class="card-title bg-gray-500">
             Terminaste @auth {{  Auth::user()->name }} @else Señor desconocido @endauth!
         </h4>
-        <p class="card-text">Tu resultado es: {{ $trivia['resultado'] }} de {{ $trivia['totalPreguntas'] }}</p>
+        <p class="card-text">Tu puntuación final es: {{ $trivia['resultado'] }} de {{ $trivia['totalPreguntas'] }}</p>
+        <p> {{ $trivia['comentario'] }} </p>
+
     </div>
 </div>
 
@@ -16,11 +18,19 @@
     <div class="card">
         @auth
             <p class="resultado-text p-2">Tu puntuación será guardada en tus resultados.</p>
-            <a href="/podio/{{ Auth::user()->id }}" class="p-2 acceso-podio">
+            <a href="/podio/{{ Auth::user()->id }}" class="p-2 links-resultado">
                 Ver mis resultados
             </a>
+            @if ($trivia['premio'] === true)
+                <a href="/social/create" class="p-2 links-resultado">
+                    Compartir sabiduría
+                </a>
+            @endif
+            <a href="/trivia" class="p-2 links-resultado">
+                Volver a jugar
+            </a>
         @else
-            <form action="/podio" method="POST">
+            <form action="/podio" method="POST" id="formNoAuth">
                 @csrf
                 <label for="name">Tu nombre:</label><input id="name"class="p-2 bg-primary" name="name" type="text" placeholder="Tu nombre..">
                 <input name="resultado" type="hidden" value="{{ $trivia['resultado'] }}">

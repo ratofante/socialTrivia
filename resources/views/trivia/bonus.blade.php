@@ -3,16 +3,17 @@
 @section('content')
 
 <div class="container m-auto mt-5 p-2">
-    <form action="/trivia" method="POST" id="triviaForm" class="card">
+    <form action="/bonus" method="POST" id="triviaForm" class="card">
       @csrf
         <div class="form-group card-body pb-0">
 
-          <p>Pregunta {{ $trivia['conteo']+1 }} de {{ $trivia['totalPreguntas'] }}</p>
+          <h3>Bonus!</h3>
+          <p>Contesta y evalúa esta pregunta para ganar más puntaje</p>
 
           <div class="card-header">
             <label for="exampleFormControlSelect2">
 
-              <h4 class="text-center w-100 mb-0">{{ $trivia[$trivia['conteo']]['pregunta'] }} </h4>
+              <h4 class="text-center w-100 mb-0">{{ $bonus['pregunta'] }} </h4>
              </label>
           </div>
 
@@ -21,7 +22,7 @@
           <div class="card-body px-1">
             <select name="respuesta" form="triviaForm" multiple class="form-control" id="exampleFormControlSelect2">
 
-              @foreach ($trivia[$trivia['conteo']]['opciones'] as $opcion)
+              @foreach ($bonus['opciones'] as $opcion)
               <!-- opcion texto -->
               <option value="{{ $opcion['texto'] }}">{{ $opcion['texto'] }}</option>
 
@@ -38,7 +39,7 @@
           </button>
         </div>
         <div class="container">
-          <p class="mb-1 text-left">Puntuación: {{ $trivia['resultado'] }}</p>
+          <p class="mb-1 text-left">n° respuestas correctas: {{ $trivia['resultado'] }}</p>
         </div>
       </form>
 
