@@ -36,7 +36,7 @@ class TriviaController extends Controller
                 //Es un usuario logueado y llegó el momento del bonus.
                 //Se le comparte una pregunta de Socials para que responda y evalúe.
 
-                $pregunta = Social::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
+                $pregunta = Social::select('id','user_id','pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3', 'puntuacion')
                 ->inRandomOrder()
                 ->first()
                 ->get()
@@ -44,7 +44,7 @@ class TriviaController extends Controller
                 $pregunta = $pregunta[0];
 
 
-                var_dump($pregunta);
+                //var_dump($pregunta);
 
                 $this->bonus['pregunta'] = $pregunta['pregunta'];
                 $this->bonus['opciones'] = array(
@@ -65,8 +65,12 @@ class TriviaController extends Controller
                         'valor' => false
                     )
                 );
-
                 shuffle($this->bonus['opciones']);
+
+                $this->bonus['id'] = $pregunta['id'];
+                $this->bonus['user_id'] = $pregunta['user_id'];
+                $this->bonus['puntuacion'] = $pregunta['puntuacion'];
+
                 Session::put('bonus', $this->bonus);
 
                 return view('trivia.bonus', [
@@ -114,7 +118,7 @@ class TriviaController extends Controller
                             $trivia['comentario'] = "Bien! Estás acercándote a los mejores resultados. No pares ahora!";
                             $trivia['premio'] = false;
                             break;
-                        case ($trivia['resultado'] <= 10);
+                        case ($trivia['resultado'] >= 9);
                             $trivia['comentario'] = "Excelente! Queremos que compartas tu sabiduría con nosotros.";
                             $trivia['premio'] = true;
                             break;

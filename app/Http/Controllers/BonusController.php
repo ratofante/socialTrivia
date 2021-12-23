@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Session;
 class BonusController extends Controller
 {
     public function check(Request $request){
+        //Sacamos datos ingresados y pasamos session-bonus.
         $trivia = Session::get('trivia');
         $respuestaUsuario = $request->input('respuesta');
         $bonus = Session::get('bonus');
+        var_dump($bonus);
+        //Chequeamos si contestó bien
         foreach($bonus['opciones'] as $opcion)
         {
             if($opcion['valor'] === true)
@@ -31,8 +34,28 @@ class BonusController extends Controller
                 }
             }
         }
+        //Seteamos bonus a false para que no vuelva a arrancar.
         $trivia['bonus'] = false;
+        //Ingresamos puntuación con registro a session-trivia.
         Session::put('trivia', $trivia);
+
+        //Chequeamos el voto
+        if($request->input('voto') === 'si')
+        {
+            $bonus['puntuacion'] += 5;
+        }
+        elseif($request->input('voto') === 'no')
+        {
+            $bonus['puntuacion'] -= 5;
+        }
+
+        //Registramos el voto en SOCIAL
+        $id = $bonus['id'];
+
+        Social::where('id', $id)
+            ->update([
+                'puntuacion' => $bonus['puntuacion']
+            ]);
         return redirect('/trivia');
     }
 }
