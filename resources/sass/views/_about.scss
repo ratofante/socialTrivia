@@ -1,0 +1,23 @@
+#aboutHeader {
+    text-align: center;
+    margin: 2rem auto;
+    color: #3b5d8d;
+    font-weight: 600;
+    font-size: 2rem;
+}
+#accordionAbout {
+    max-width: 500px;
+    margin: auto;
+}
+.aboutLink {
+    color:#3b5d8d;
+    text-decoration: none;
+    &:hover {
+        font-weight: bold;
+        color:#4d7bbb;
+    }
+}
+.accordion-button:not(.collapsed){
+    color: #3b5d8d !important;
+    font-weight: 600;
+}

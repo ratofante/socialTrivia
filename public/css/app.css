@@ -92,22 +92,64 @@ footer {
   color: #0e4291;
 }
 
+.homePanel {
+  justify-content: center;
+  align-items: center;
+}
+
 #homePanel {
   padding: 1rem;
   width: 100%;
-  height: 200px;
+  height: 100%;
+  max-height: 272px;
   background-color: #dfcdbc;
-  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline: 2px solid rgba(0, 0, 0, 0.54);
   outline-offset: -2px;
   border-radius: 4px;
   box-shadow: 4px 3px 5px #5b3838cc;
 }
 #homePanel .carousel-inner {
-  height: calc(200px - $padding);
+  height: calc(100% - $padding);
   width: 100%;
 }
 #homePanel .carousel-inner .carousel-item {
   width: 100%;
+}
+@media (min-width: 992px) {
+  #homePanel .carousel-inner .carousel-item {
+    padding: 2rem;
+  }
+}
+#homePanel .carousel-inner .carousel-item h3, #homePanel .carousel-inner .carousel-item .h3 {
+  text-align: center;
+  font-weight: bold;
+  color: #574043;
+  margin-bottom: 2rem;
+}
+#homePanel .carousel-inner .carousel-item p.pregunta {
+  background-color: #61381c;
+  color: #f8d4a5;
+  padding: 0.3rem;
+  text-align: center;
+  margin: auto auto 2rem auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 4px;
+}
+#homePanel .carousel-inner .carousel-item p {
+  margin-bottom: 2rem;
+}
+#homePanel .carousel-inner .carousel-item p span.user-name {
+  color: #4d739b;
+  font-weight: bold;
+}
+#homePanel .carousel-inner .carousel-item p.score {
+  font-weight: bold;
+  color: #61381c;
+}
+#homePanel .carousel-inner .carousel-item p span.puntaje {
+  color: #4d739b;
 }
 
 .carousel-indicators .active {
@@ -128,9 +170,60 @@ footer {
   left: -65px !important;
 }
 
+#aboutHeader {
+  text-align: center;
+  margin: 2rem auto;
+  color: #3b5d8d;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+#accordionAbout {
+  max-width: 500px;
+  margin: auto;
+}
+
+.aboutLink {
+  color: #3b5d8d;
+  text-decoration: none;
+}
+.aboutLink:hover {
+  font-weight: bold;
+  color: #4d7bbb;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #3b5d8d !important;
+  font-weight: 600;
+}
+
 #triviaForm {
   max-width: 650px;
   margin: auto;
+}
+
+.compartir-form {
+  width: 95%;
+  max-width: 450px;
+}
+
+.form-control {
+  width: 90% !important;
+  margin: auto !important;
+}
+.form-control form button .btn-custom {
+  padding: 0.1rem;
+}
+
+.form-label {
+  margin: 1rem 0px 0.5rem 2rem !important;
+  font-weight: 600 !important;
+}
+
+.help-text {
+  width: 70%;
+  margin: 1rem auto 0px auto;
+  display: block;
 }
 
 #formNoAuth {

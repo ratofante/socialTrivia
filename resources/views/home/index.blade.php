@@ -92,7 +92,7 @@
                             </div>
             </div>
             <!-- GREETINGS -->
-            <div class="d-none d-sm-flex col-sm-6 mt-5">
+            <div class="d-none d-sm-flex homePanel col-sm-6 mt-5">
                         <div id="homePanel" class="carousel slide" data-bs-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-bs-target="#homePanel" data-bs-slide-to="0" class="active"></li>
@@ -105,17 +105,17 @@
                             @endauth
                                 <div class="carousel-item active">
                                     <h3>Mejor puntuación</h3>
-                                    <p>Intenta superar a {{ $homePanel['top1']['username'] }}.</p>
-                                    <p>Puntuación: {{ $homePanel['top1']['resultado'] }}</p>
+                                    <p>Intenta superar a <span class="user-name">{{ $homePanel['top1']['username'] }}</span>.</p>
+                                    <p class="score">Puntuación: <span class="puntaje">{{ $homePanel['top1']['resultado'] }}</span></p>
                                 </div>
                                 <div class="carousel-item">
                                     <h3>Última Pregunta agregada</h3>
-                                    <p>{{ $homePanel['ultimoIngreso']['pregunta'] }}</p>
+                                    <p class="pregunta">{{ $homePanel['ultimoIngreso']['pregunta'] }}</p>
                                 </div>
                                 <div class="carousel-item">
                                     <h3>Próximas preguntas</h3>
-                                    <p>{{ $homePanel['puntuacionAlta']['pregunta'] }}</p>
-                                    <p>Puntuación: {{ $homePanel['puntuacionAlta']['puntuacion'] }}</p>
+                                    <p class="pregunta">{{ $homePanel['puntuacionAlta']['pregunta'] }}</p>
+                                    <p class="score">Puntuación: <span class="puntaje">{{ $homePanel['puntuacionAlta']['puntuacion'] }}</span></p>
                                 </div>
                             </div>
                             <button class="carousel-control-prev d-none d-lg-inline" type="button" data-bs-target="#homePanel" data-bs-slide="prev">

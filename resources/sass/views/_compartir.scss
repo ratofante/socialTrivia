@@ -1,0 +1,23 @@
+.compartir-form {
+    width: 95%;
+    max-width: 450px;
+
+}
+.form-control {
+    width: 90% !important;
+    margin: auto !important;
+    form {
+        button .btn-custom {
+            padding: .1rem;
+        }
+    }
+}
+.form-label {
+    margin: 1rem 0px 0.5rem 2rem !important;
+    font-weight: 600 !important;
+}
+.help-text {
+    width: 70%;
+    margin: 1rem auto 0px auto ;
+    display: block;
+}

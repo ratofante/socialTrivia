@@ -1,10 +1,16 @@
+.homePanel {
+    justify-content: center;
+    align-items: center;
+
+}
 #homePanel {
     $padding: 1rem;
     padding: $padding;
     $width: 100%;
     width: $width;
-    $height: 200px;
+    $height: 100%;
     height: $height;
+    max-height: 272px;
     background-color: $custom-dark;
     @include custom-outline;
     @include box-shadow;
@@ -12,11 +18,41 @@
         height: calc(#{$height} - $padding);
         width: $width;
         .carousel-item {
-
             width: $width;
+            @include square-pc {
+                padding: 2rem;
+            }
+            h3 {
+                text-align: center;
+                font-weight: bold;
+                color: #574043;
+                margin-bottom: 2rem;
+            }
+            p.pregunta{
+                background-color: rgb(97, 56, 28);
+                color: rgb(248, 212, 165);
+                padding: .3rem;
+                text-align: center;
+                margin:auto auto 2rem auto;
+                width: fit-content;
+                border-radius: 4px;
+            }
+            p {margin-bottom: 2rem;}
+            p span.user-name {
+                color: #4d739b;
+                font-weight: bold;
+            }
+            p.score {
+                font-weight: bold;
+                color:rgb(97, 56, 28);
+            }
+            p span.puntaje {
+                color: #4d739b;
+            }
         }
     }
 }
 .carousel-indicators .active {
     background-color: black !important;
 }
+
