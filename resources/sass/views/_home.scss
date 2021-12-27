@@ -1,0 +1,22 @@
+#homePanel {
+    $padding: 1rem;
+    padding: $padding;
+    $width: 100%;
+    width: $width;
+    $height: 200px;
+    height: $height;
+    background-color: $custom-dark;
+    @include custom-outline;
+    @include box-shadow;
+    .carousel-inner {
+        height: calc(#{$height} - $padding);
+        width: $width;
+        .carousel-item {
+
+            width: $width;
+        }
+    }
+}
+.carousel-indicators .active {
+    background-color: black !important;
+}

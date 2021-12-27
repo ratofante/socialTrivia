@@ -43,3 +43,11 @@ $warning:       $yellow;
 $danger:        $red;
 $light:         $gray-100;
 $dark:          $gray-900;
+
+
+.form-check-input{
+    border-color: black !important;
+    &:checked {
+    background-color: #ba8e68 !important;
+    }
+}

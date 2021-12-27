@@ -44,7 +44,7 @@ class SocialController extends Controller
             'opcion_2' => $request->input('opcion_2'),
             'opcion_3' => $request->input('opcion_3')
         ]);
-        return view('home.index');
+        return redirect('/home');
     }
 
     /**

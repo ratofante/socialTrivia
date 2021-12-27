@@ -3,16 +3,30 @@
     margin: 1rem;
     border-radius: 4px;
     width: 150px;
-    a {
+    background-color: $custom-dark;
+    @include box-shadow;
+    &:hover {background-color: #d2beac;}
+    @include small-mobile {
+        font-size: 1.1rem;
+        width: 170px;
+        height: 55px;
+    }
+    @include medium-mobile {
         font-size: 1.2rem;
-        text-decoration: none;
+        width: 200px;
+        height:70px;
     }
 }
 .link-btn {
     background-color: $gray-500;
+    &:hover a {
+        color: $blue;
+        font-weight: bold;
+    }
     a {
         text-decoration: none;
-        color: $white;
+        color: $blue;
+
     }
 
 }

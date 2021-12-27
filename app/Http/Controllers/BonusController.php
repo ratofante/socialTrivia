@@ -13,7 +13,7 @@ class BonusController extends Controller
         $trivia = Session::get('trivia');
         $respuestaUsuario = $request->input('respuesta');
         $bonus = Session::get('bonus');
-        var_dump($bonus);
+
         //Chequeamos si contestó bien
         foreach($bonus['opciones'] as $opcion)
         {
@@ -30,6 +30,8 @@ class BonusController extends Controller
                         'input' => $respuestaUsuario,
                         'respuesta' => $opcion['texto'],
                     );
+
+                    $trivia['evaluacion'] = [];
                     array_push($trivia['evaluacion'], $registro);
                 }
             }

@@ -39,9 +39,8 @@ class TriviaController extends Controller
                 $pregunta = Social::select('id','user_id','pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3', 'puntuacion')
                 ->inRandomOrder()
                 ->first()
-                ->get()
                 ->toArray();
-                $pregunta = $pregunta[0];
+                $pregunta = $pregunta;
 
 
                 //var_dump($pregunta);
