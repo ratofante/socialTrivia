@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-12-2021 a las 18:44:10
+-- Tiempo de generación: 27-12-2021 a las 18:36:28
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -120,7 +120,12 @@ INSERT INTO `podio` (`id`, `user_id`, `username`, `resultado`, `created_at`, `up
 (6, 2, 'SumoEmperador', 9, '2021-12-22 16:06:18', '2021-12-22 16:06:18'),
 (7, 3, 'Sumerio', 9, '2021-12-22 23:55:13', '2021-12-22 23:55:13'),
 (9, 4, 'CumbiLaChancha', 11, '2021-12-23 14:30:37', '2021-12-23 14:30:37'),
-(10, 5, 'rodrigo', 11, '2021-12-23 17:36:22', '2021-12-23 17:36:22');
+(10, 5, 'rodrigo', 11, '2021-12-23 17:36:22', '2021-12-23 17:36:22'),
+(11, 6, 'rosa', 9, '2021-12-27 17:00:45', '2021-12-27 17:00:45'),
+(12, 6, 'rosa', 8, '2021-12-27 17:14:49', '2021-12-27 17:14:49'),
+(13, 6, 'rosa', 8, '2021-12-27 17:17:41', '2021-12-27 17:17:41'),
+(14, 6, 'rosa', 10, '2021-12-27 17:18:55', '2021-12-27 17:18:55'),
+(15, 6, 'rosa', 9, '2021-12-27 17:23:49', '2021-12-27 17:23:49');
 
 -- --------------------------------------------------------
 
@@ -147,8 +152,11 @@ CREATE TABLE `socials` (
 --
 
 INSERT INTO `socials` (`id`, `user_id`, `pregunta`, `respuesta`, `opcion_1`, `opcion_2`, `opcion_3`, `puntuacion`, `categoria`, `created_at`, `updated_at`) VALUES
-(1, 2, '¿Cuál de las siguientes no es una comida para gatos?', 'Frutos del Bosque', 'Roedores', 'Reptiles', 'Pájaros', 50, '2', '2021-12-22 16:36:59', '2021-12-23 17:36:06'),
-(2, 5, 'Empresa fabricante de automóviles fundada en 1909, Alemania, Corresponde a:', 'Audi', 'Volkswagen', 'General Motors', 'Lamborghini', 50, '2', '2021-12-23 17:41:00', '2021-12-23 17:41:00');
+(1, 2, '¿Cuál de las siguientes no es una comida para gatos?', 'Frutos del Bosque', 'Roedores', 'Reptiles', 'Pájaros', 40, '2', '2021-12-22 16:36:59', '2021-12-27 17:18:44'),
+(2, 5, 'Empresa fabricante de automóviles fundada en 1909, Alemania, Corresponde a:', 'Audi', 'Volkswagen', 'General Motors', 'Lamborghini', 50, '2', '2021-12-23 17:41:00', '2021-12-23 17:41:00'),
+(3, 6, 'La crisis económica también conocida como \"La Gran Depresión\" se desató en:', '1929', '1892', '1919', '1938', 50, '2', '2021-12-27 17:03:18', '2021-12-27 17:03:18'),
+(6, 6, '¿Cuál es el significado de \'Alea iacta est\'?', 'La suerte está echada', 'Qué cosas injustas', 'La justicia es recta', 'No hay suerte en la justicia', 55, '2', '2021-12-27 17:20:52', '2021-12-27 17:23:42'),
+(7, 6, '¿En qué año fue usado el telescopio para la observar la luna?', '1610', '1652', '1512', '1692', 50, '2', '2021-12-27 17:25:38', '2021-12-27 17:25:38');
 
 -- --------------------------------------------------------
 
@@ -246,7 +254,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (2, 'SumoEmperador', 'sumo@sumo.com', NULL, '$2y$10$bLFJUYzE/cViHrhEcL8l8.86xQHX8dOE99UnTA8T.1HxbDUqaTZ5q', NULL, '2021-12-21 16:17:36', '2021-12-21 16:17:36'),
 (3, 'Sumerio', 'sumerio@sumerio.com', NULL, '$2y$10$UgUOdNBKjLAV9JOH0qPPGeor.JRcsj.xxaxQBUR/PbnQEfJdLTXQG', NULL, '2021-12-22 23:41:12', '2021-12-22 23:41:12'),
 (4, 'CumbiLaChancha', 'chancha@chancha.com', NULL, '$2y$10$J7eY02kIzjeSQqtEX4w3GO3C7.3v8qKQUYRHiI6gEzFAQCh1PQkD2', NULL, '2021-12-23 14:18:58', '2021-12-23 14:18:58'),
-(5, 'rodrigo', 'rodrigo@rodrigo.com', NULL, '$2y$10$ZkPn9lsJcq/EIOkC8Mg0tOx1/l/bzRDORrBkxMmPc0tdfU1GdWgy.', NULL, '2021-12-23 17:35:08', '2021-12-23 17:35:08');
+(5, 'rodrigo', 'rodrigo@rodrigo.com', NULL, '$2y$10$ZkPn9lsJcq/EIOkC8Mg0tOx1/l/bzRDORrBkxMmPc0tdfU1GdWgy.', NULL, '2021-12-23 17:35:08', '2021-12-23 17:35:08'),
+(6, 'rosa', 'rosa@rosa.com', NULL, '$2y$10$ts9DegRQ1M.8.WhwKfVjaezDvsx2JFrhz/u9C6elyT27gqGJOSmJi', NULL, '2021-12-27 15:45:01', '2021-12-27 15:45:01');
 
 --
 -- Índices para tablas volcadas
@@ -332,13 +341,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `podio`
 --
 ALTER TABLE `podio`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `socials`
 --
 ALTER TABLE `socials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `trivia`
@@ -350,7 +359,7 @@ ALTER TABLE `trivia`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
