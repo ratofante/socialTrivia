@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-12-2021 a las 18:36:28
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 7.3.29
+-- Tiempo de generación: 28-12-2021 a las 00:49:43
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,7 +102,7 @@ CREATE TABLE `podio` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `resultado` int(11) NOT NULL,
+  `resultado` float NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -119,13 +119,17 @@ INSERT INTO `podio` (`id`, `user_id`, `username`, `resultado`, `created_at`, `up
 (5, 1, 'CumbiaLaGata', 10, '2021-12-22 13:46:49', '2021-12-22 13:46:49'),
 (6, 2, 'SumoEmperador', 9, '2021-12-22 16:06:18', '2021-12-22 16:06:18'),
 (7, 3, 'Sumerio', 9, '2021-12-22 23:55:13', '2021-12-22 23:55:13'),
-(9, 4, 'CumbiLaChancha', 11, '2021-12-23 14:30:37', '2021-12-23 14:30:37'),
-(10, 5, 'rodrigo', 11, '2021-12-23 17:36:22', '2021-12-23 17:36:22'),
 (11, 6, 'rosa', 9, '2021-12-27 17:00:45', '2021-12-27 17:00:45'),
 (12, 6, 'rosa', 8, '2021-12-27 17:14:49', '2021-12-27 17:14:49'),
 (13, 6, 'rosa', 8, '2021-12-27 17:17:41', '2021-12-27 17:17:41'),
 (14, 6, 'rosa', 10, '2021-12-27 17:18:55', '2021-12-27 17:18:55'),
-(15, 6, 'rosa', 9, '2021-12-27 17:23:49', '2021-12-27 17:23:49');
+(15, 6, 'rosa', 9, '2021-12-27 17:23:49', '2021-12-27 17:23:49'),
+(16, 7, 'BoldoLaHierbaSuperior', 9, '2021-12-27 22:03:06', '2021-12-27 22:03:06'),
+(17, 7, 'BoldoLaHierbaSuperior', 8, '2021-12-27 22:39:07', '2021-12-27 22:39:07'),
+(18, 7, 'BoldoLaHierbaSuperior', 9.25, '2021-12-27 22:40:02', '2021-12-27 22:40:02'),
+(19, 7, 'BoldoLaHierbaSuperior', 8, '2021-12-27 22:48:53', '2021-12-27 22:48:53'),
+(20, 2, 'SumoEmperador', 9.25, '2021-12-27 22:51:55', '2021-12-27 22:51:55'),
+(21, 2, 'SumoEmperador', 10.5, '2021-12-27 22:55:57', '2021-12-27 22:55:57');
 
 -- --------------------------------------------------------
 
@@ -153,10 +157,12 @@ CREATE TABLE `socials` (
 
 INSERT INTO `socials` (`id`, `user_id`, `pregunta`, `respuesta`, `opcion_1`, `opcion_2`, `opcion_3`, `puntuacion`, `categoria`, `created_at`, `updated_at`) VALUES
 (1, 2, '¿Cuál de las siguientes no es una comida para gatos?', 'Frutos del Bosque', 'Roedores', 'Reptiles', 'Pájaros', 40, '2', '2021-12-22 16:36:59', '2021-12-27 17:18:44'),
-(2, 5, 'Empresa fabricante de automóviles fundada en 1909, Alemania, Corresponde a:', 'Audi', 'Volkswagen', 'General Motors', 'Lamborghini', 50, '2', '2021-12-23 17:41:00', '2021-12-23 17:41:00'),
-(3, 6, 'La crisis económica también conocida como \"La Gran Depresión\" se desató en:', '1929', '1892', '1919', '1938', 50, '2', '2021-12-27 17:03:18', '2021-12-27 17:03:18'),
+(2, 5, 'Empresa fabricante de automóviles fundada en 1909, Alemania, Corresponde a:', 'Audi', 'Volkswagen', 'General Motors', 'Lamborghini', 55, '2', '2021-12-23 17:41:00', '2021-12-27 22:38:46'),
+(3, 6, 'La crisis económica también conocida como \"La Gran Depresión\" se desató en:', '1929', '1892', '1919', '1938', 65, '2', '2021-12-27 17:03:18', '2021-12-27 22:57:17'),
 (6, 6, '¿Cuál es el significado de \'Alea iacta est\'?', 'La suerte está echada', 'Qué cosas injustas', 'La justicia es recta', 'No hay suerte en la justicia', 55, '2', '2021-12-27 17:20:52', '2021-12-27 17:23:42'),
-(7, 6, '¿En qué año fue usado el telescopio para la observar la luna?', '1610', '1652', '1512', '1692', 50, '2', '2021-12-27 17:25:38', '2021-12-27 17:25:38');
+(7, 6, '¿En qué año fue usado el telescopio para la observar la luna?', '1610', '1652', '1512', '1692', 50, '2', '2021-12-27 17:25:38', '2021-12-27 17:25:38'),
+(8, 7, 'Colón creyó haber llegado a la India, pero desembarcó en la isla de:', 'Guanahani', 'América', 'Cuba', 'México', 60, '2', '2021-12-27 22:23:25', '2021-12-27 22:48:44'),
+(9, 2, 'Astrónomo y matemático alemán. Conocido por sus obra \"Leyes sobre el movimiento de los planetas en su órbita alrededor del Sol\"', 'Johannes Kepler', 'Tycho Brahe', 'Galileo Galilei', 'Nicolás Copérnico', 55, '2', '2021-12-27 22:55:06', '2021-12-27 22:55:43');
 
 -- --------------------------------------------------------
 
@@ -255,7 +261,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (3, 'Sumerio', 'sumerio@sumerio.com', NULL, '$2y$10$UgUOdNBKjLAV9JOH0qPPGeor.JRcsj.xxaxQBUR/PbnQEfJdLTXQG', NULL, '2021-12-22 23:41:12', '2021-12-22 23:41:12'),
 (4, 'CumbiLaChancha', 'chancha@chancha.com', NULL, '$2y$10$J7eY02kIzjeSQqtEX4w3GO3C7.3v8qKQUYRHiI6gEzFAQCh1PQkD2', NULL, '2021-12-23 14:18:58', '2021-12-23 14:18:58'),
 (5, 'rodrigo', 'rodrigo@rodrigo.com', NULL, '$2y$10$ZkPn9lsJcq/EIOkC8Mg0tOx1/l/bzRDORrBkxMmPc0tdfU1GdWgy.', NULL, '2021-12-23 17:35:08', '2021-12-23 17:35:08'),
-(6, 'rosa', 'rosa@rosa.com', NULL, '$2y$10$ts9DegRQ1M.8.WhwKfVjaezDvsx2JFrhz/u9C6elyT27gqGJOSmJi', NULL, '2021-12-27 15:45:01', '2021-12-27 15:45:01');
+(6, 'rosa', 'rosa@rosa.com', NULL, '$2y$10$ts9DegRQ1M.8.WhwKfVjaezDvsx2JFrhz/u9C6elyT27gqGJOSmJi', NULL, '2021-12-27 15:45:01', '2021-12-27 15:45:01'),
+(7, 'BoldoLaHierbaSuperior', 'boldo@boldo.com', NULL, '$2y$10$XZ8F9gqcra6RXfTD5IFUOuhS5eDrK1mBrwu7c0NghGLohIR4eBh2W', NULL, '2021-12-27 22:01:16', '2021-12-27 22:01:16');
 
 --
 -- Índices para tablas volcadas
@@ -341,13 +348,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `podio`
 --
 ALTER TABLE `podio`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `socials`
 --
 ALTER TABLE `socials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `trivia`
@@ -359,7 +366,7 @@ ALTER TABLE `trivia`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
