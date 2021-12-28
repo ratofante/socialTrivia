@@ -67,6 +67,9 @@
                                     <a class="dropdown-item" href="/podio/{{ Auth::user()->id}}">
                                         Resultados
                                     </a>
+                                    <a href="/social/{{ Auth::user()->id }}" class="dropdown-item">
+                                        Mis Preguntas
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

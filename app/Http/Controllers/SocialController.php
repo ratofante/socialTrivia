@@ -55,7 +55,15 @@ class SocialController extends Controller
      */
     public function show($id)
     {
-        //
+        $preguntas = Social::select('pregunta', 'puntuacion', 'created_at')
+            ->where('user_id', '=', $id)
+            ->orderBy('puntuacion', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+            return view('social.show', [
+                'preguntas' => $preguntas
+            ]);
     }
 
     /**

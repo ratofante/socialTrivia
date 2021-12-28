@@ -95,33 +95,35 @@ class TriviaController extends Controller
                         'username' => Auth::user()->name,
                         'resultado' => $trivia['resultado']
                     ]);
-
-                    switch (true) {
-                        case ($trivia['resultado'] === 0):
-                            $trivia['comentario'] = "Uy! Solo esperamos que haya sido un error. Vuelve a intentarlo";
-                            $trivia['premio'] = false;
-                            break;
-                        case ($trivia['resultado'] <= 3):
-                            $trivia['comentario'] = "Muy mal. Pero por algo se comienza. Revisa tus respuestas y quizás aprendas algo más";
-                            $trivia['premio'] = false;
-                            break;
-                        case ($trivia['resultado'] <= 5);
-                            $trivia['comentario'] = "Mediocre. Pero vemos esperanzas en que puedas mejorar";
-                            $trivia['premio'] = false;
-                            break;
-                        case ($trivia['resultado'] <= 6);
-                            $trivia['comentario'] = "No es muy buen resultado pero con un poco de práctica puedes mejorar";
-                            $trivia['premio'] = false;
-                            break;
-                        case ($trivia['resultado'] <= 8);
-                            $trivia['comentario'] = "Bien! Estás acercándote a los mejores resultados. No pares ahora!";
-                            $trivia['premio'] = false;
-                            break;
-                        case ($trivia['resultado'] >= 9);
-                            $trivia['comentario'] = "Excelente! Queremos que compartas tu sabiduría con nosotros.";
-                            $trivia['premio'] = true;
-                            break;
-                    }
+                }
+                $ponderado = round($trivia['resultado'], 0, PHP_ROUND_HALF_DOWN);
+                var_dump($trivia['resultado']);
+                var_dump($ponderado);
+                switch (true) {
+                    case ($ponderado <= 0):
+                        $trivia['comentario'] = "Uy! Solo esperamos que haya sido un error. Vuelve a intentarlo";
+                        $trivia['premio'] = false;
+                        break;
+                    case ($ponderado <= 3.0):
+                        $trivia['comentario'] = "Muy mal. Pero por algo se comienza. Revisa tus respuestas y quizás aprendas algo más";
+                        $trivia['premio'] = false;
+                        break;
+                    case ($ponderado <= 5.0);
+                        $trivia['comentario'] = "Mediocre. Pero vemos esperanzas en que puedas mejorar";
+                        $trivia['premio'] = false;
+                        break;
+                    case ($ponderado <= 6.0);
+                        $trivia['comentario'] = "No es muy buen resultado pero con un poco de práctica puedes mejorar";
+                        $trivia['premio'] = false;
+                        break;
+                    case ($ponderado <= 8.0);
+                        $trivia['comentario'] = "Bien! Estás acercándote a los mejores resultados. No pares ahora!";
+                        $trivia['premio'] = false;
+                        break;
+                    case ($ponderado >= 9.0);
+                        $trivia['comentario'] = "Excelente! Queremos que compartas tu sabiduría con nosotros.";
+                        $trivia['premio'] = true;
+                        break;
                 }
 
 

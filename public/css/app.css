@@ -117,7 +117,7 @@ footer {
 }
 @media (min-width: 992px) {
   #homePanel .carousel-inner .carousel-item {
-    padding: 2rem;
+    padding: 2rem 4rem;
   }
 }
 #homePanel .carousel-inner .carousel-item h3, #homePanel .carousel-inner .carousel-item .h3 {

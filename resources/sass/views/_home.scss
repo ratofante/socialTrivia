@@ -20,7 +20,7 @@
         .carousel-item {
             width: $width;
             @include square-pc {
-                padding: 2rem;
+                padding: 2rem 4rem;
             }
             h3 {
                 text-align: center;
