@@ -12,7 +12,6 @@ class Trivia extends Model
     protected $table = 'trivia';
     protected $primaryKey = 'id';
     public $timestamps = true;
-    protected $dateFormat = 'd-m-Y H:i:s';
     protected $fillable = ['pregunta', 'respuesta', 'opcion_1', 'opcion_2', 'opcion_3', 'categoria'];
     protected $hidden = ['id'];
 

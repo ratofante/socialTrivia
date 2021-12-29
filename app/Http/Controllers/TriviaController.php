@@ -97,8 +97,8 @@ class TriviaController extends Controller
                     ]);
                 }
                 $ponderado = round($trivia['resultado'], 0, PHP_ROUND_HALF_DOWN);
-                var_dump($trivia['resultado']);
-                var_dump($ponderado);
+                //var_dump($trivia['resultado']);
+                //var_dump($ponderado);
                 switch (true) {
                     case ($ponderado <= 0):
                         $trivia['comentario'] = "Uy! Solo esperamos que haya sido un error. Vuelve a intentarlo";

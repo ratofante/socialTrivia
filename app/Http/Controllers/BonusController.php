@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Social;
+use App\Models\Trivia;
 use Illuminate\Support\Facades\Session;
 
 class BonusController extends Controller
@@ -58,6 +59,27 @@ class BonusController extends Controller
             ->update([
                 'puntuacion' => $bonus['puntuacion']
             ]);
+
+        //Chequeamos puntuación y cambio de categoria
+        if($bonus['puntuacion'] === 100)
+        {
+            var_dump($bonus);
+            Social::where('id', $bonus['id'])
+                ->update(['categoria' => '1']);
+            Trivia::create([
+                'pregunta' => $bonus['pregunta'],
+                'respuesta' => $bonus['opciones'][0]['texto'],
+                'opcion_1' => $bonus['opciones'][1]['texto'],
+                'opcion_2' => $bonus['opciones'][2]['texto'],
+                'opcion_3' => $bonus['opciones'][3]['texto']
+            ]);
+        }
+        elseif($bonus['puntuacion'] === 0)
+        {
+            Social::where('id', $bonus['id'])
+                ->update(['categoria' => '0']);
+        }
         return redirect('/trivia');
     }
+
 }

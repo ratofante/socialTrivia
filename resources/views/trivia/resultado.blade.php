@@ -47,7 +47,7 @@
         <h3>{{ $registro['pregunta'] }}</h3>
     </div>
     <div class="card-body bg-custom-light">
-        <p> Tu respuesta: {{ $registro['input'] }}</p>
+        <p> <span class="makeItBlue">Tu respuesta</span>: {{ $registro['input'] }}</p>
         <p> <b class="custom-bold">Respuesta correcta:</b> {{ $registro['respuesta'] }}</p>
     </div>
 </div>

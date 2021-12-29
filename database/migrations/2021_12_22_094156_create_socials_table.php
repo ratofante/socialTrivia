@@ -22,7 +22,7 @@ class CreateSocialsTable extends Migration
             $table->string('opcion_1');
             $table->string('opcion_2');
             $table->string('opcion_3');
-            $table->string('categoria');
+            $table->string('categoria')->default('2');
             $table->integer('puntuacion');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

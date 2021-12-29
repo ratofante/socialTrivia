@@ -11,11 +11,17 @@
     </thead>
     <tbody>
         @foreach ($preguntas as $pregunta)
-        <tr class="bg-custom-light">
-            <td>{{ $pregunta->pregunta }}</td>
-            <td class="text-center"> {{ $pregunta->puntuacion }}</td>
-            <td class="text-center"> {{ $pregunta->created_at }}</td>
-        </tr>
+            @if($pregunta->categoria == 1)
+                <tr class="bg-custom-light bg-info">
+            @elseif ($pregunta->categoria == 0)
+                <tr class="bg-custom-light bg-warning">
+            @else
+                <tr class="bg-custom-light">
+            @endif
+                    <td>{{ $pregunta->pregunta }} {{ $pregunta->categoria }}</td>
+                    <td class="text-center"> {{ $pregunta->puntuacion }}</td>
+                    <td class="text-center"> {{ $pregunta->created_at }}</td>
+                </tr>
         @endforeach
     </tbody>
 </table>
