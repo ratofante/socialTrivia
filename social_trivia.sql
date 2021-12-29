@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2021 a las 00:49:43
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 7.3.33
+-- Tiempo de generación: 29-12-2021 a las 18:26:24
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -129,7 +129,28 @@ INSERT INTO `podio` (`id`, `user_id`, `username`, `resultado`, `created_at`, `up
 (18, 7, 'BoldoLaHierbaSuperior', 9.25, '2021-12-27 22:40:02', '2021-12-27 22:40:02'),
 (19, 7, 'BoldoLaHierbaSuperior', 8, '2021-12-27 22:48:53', '2021-12-27 22:48:53'),
 (20, 2, 'SumoEmperador', 9.25, '2021-12-27 22:51:55', '2021-12-27 22:51:55'),
-(21, 2, 'SumoEmperador', 10.5, '2021-12-27 22:55:57', '2021-12-27 22:55:57');
+(21, 2, 'SumoEmperador', 10.5, '2021-12-27 22:55:57', '2021-12-27 22:55:57'),
+(23, NULL, 'Pikachu', 10, '2021-12-28 19:47:04', '2021-12-28 19:47:04'),
+(24, NULL, 'Panda', 8.75, '2021-12-28 20:15:13', '2021-12-28 20:15:13'),
+(25, 8, 'Gatona', 10, '2021-12-28 20:20:30', '2021-12-28 20:20:30'),
+(26, 4, 'CumbiLaChancha', 10, '2021-12-29 13:23:51', '2021-12-29 13:23:51'),
+(27, 4, 'CumbiLaChancha', 10, '2021-12-29 13:25:29', '2021-12-29 13:25:29'),
+(28, 4, 'CumbiLaChancha', -0.75, '2021-12-29 13:29:14', '2021-12-29 13:29:14'),
+(29, 4, 'CumbiLaChancha', 6.75, '2021-12-29 13:33:09', '2021-12-29 13:33:09'),
+(30, 4, 'CumbiLaChancha', 9.25, '2021-12-29 13:34:58', '2021-12-29 13:34:58'),
+(31, 4, 'CumbiLaChancha', 6.75, '2021-12-29 13:40:52', '2021-12-29 13:40:52'),
+(32, 4, 'CumbiLaChancha', 6.75, '2021-12-29 13:43:42', '2021-12-29 13:43:42'),
+(33, 4, 'CumbiLaChancha', 6.75, '2021-12-29 13:45:51', '2021-12-29 13:45:51'),
+(34, 4, 'CumbiLaChancha', 6.75, '2021-12-29 13:46:41', '2021-12-29 13:46:41'),
+(35, 4, 'CumbiLaChancha', 5.5, '2021-12-29 13:48:00', '2021-12-29 13:48:00'),
+(36, 4, 'CumbiLaChancha', 5, '2021-12-29 13:48:36', '2021-12-29 13:48:36'),
+(37, 4, 'CumbiLaChancha', 5.5, '2021-12-29 13:49:20', '2021-12-29 13:49:20'),
+(38, 4, 'CumbiLaChancha', 5.5, '2021-12-29 13:50:43', '2021-12-29 13:50:43'),
+(39, 4, 'CumbiLaChancha', 5.5, '2021-12-29 13:52:54', '2021-12-29 13:52:54'),
+(40, 4, 'CumbiLaChancha', 8, '2021-12-29 13:54:15', '2021-12-29 13:54:15'),
+(41, 4, 'CumbiLaChancha', 5.5, '2021-12-29 13:55:01', '2021-12-29 13:55:01'),
+(42, 4, 'CumbiLaChancha', 6.75, '2021-12-29 13:56:13', '2021-12-29 13:56:13'),
+(43, 4, 'CumbiLaChancha', 3, '2021-12-29 14:03:47', '2021-12-29 14:03:47');
 
 -- --------------------------------------------------------
 
@@ -156,13 +177,15 @@ CREATE TABLE `socials` (
 --
 
 INSERT INTO `socials` (`id`, `user_id`, `pregunta`, `respuesta`, `opcion_1`, `opcion_2`, `opcion_3`, `puntuacion`, `categoria`, `created_at`, `updated_at`) VALUES
-(1, 2, '¿Cuál de las siguientes no es una comida para gatos?', 'Frutos del Bosque', 'Roedores', 'Reptiles', 'Pájaros', 40, '2', '2021-12-22 16:36:59', '2021-12-27 17:18:44'),
+(1, 2, '¿Cuál de las siguientes no es una comida para gatos?', 'Frutos del Bosque', 'Roedores', 'Reptiles', 'Pájaros', 0, '0', '2021-12-22 16:36:59', '2021-12-29 13:55:49'),
 (2, 5, 'Empresa fabricante de automóviles fundada en 1909, Alemania, Corresponde a:', 'Audi', 'Volkswagen', 'General Motors', 'Lamborghini', 55, '2', '2021-12-23 17:41:00', '2021-12-27 22:38:46'),
-(3, 6, 'La crisis económica también conocida como \"La Gran Depresión\" se desató en:', '1929', '1892', '1919', '1938', 65, '2', '2021-12-27 17:03:18', '2021-12-27 22:57:17'),
-(6, 6, '¿Cuál es el significado de \'Alea iacta est\'?', 'La suerte está echada', 'Qué cosas injustas', 'La justicia es recta', 'No hay suerte en la justicia', 55, '2', '2021-12-27 17:20:52', '2021-12-27 17:23:42'),
-(7, 6, '¿En qué año fue usado el telescopio para la observar la luna?', '1610', '1652', '1512', '1692', 50, '2', '2021-12-27 17:25:38', '2021-12-27 17:25:38'),
-(8, 7, 'Colón creyó haber llegado a la India, pero desembarcó en la isla de:', 'Guanahani', 'América', 'Cuba', 'México', 60, '2', '2021-12-27 22:23:25', '2021-12-27 22:48:44'),
-(9, 2, 'Astrónomo y matemático alemán. Conocido por sus obra \"Leyes sobre el movimiento de los planetas en su órbita alrededor del Sol\"', 'Johannes Kepler', 'Tycho Brahe', 'Galileo Galilei', 'Nicolás Copérnico', 55, '2', '2021-12-27 22:55:06', '2021-12-27 22:55:43');
+(3, 6, 'La crisis económica también conocida como \"La Gran Depresión\" se desató en:', '1929', '1892', '1919', '1938', 100, '1', '2021-12-27 17:03:18', '2021-12-29 14:03:38'),
+(6, 6, '¿Cuál es el significado de \'Alea iacta est\'?', 'La suerte está echada', 'Qué cosas injustas', 'La justicia es recta', 'No hay suerte en la justicia', 60, '2', '2021-12-27 17:20:52', '2021-12-29 13:54:51'),
+(7, 6, '¿En qué año fue usado el telescopio para la observar la luna?', '1610', '1652', '1512', '1692', 50, '2', '2021-12-27 17:25:38', '2021-12-29 13:52:44'),
+(8, 7, 'Colón creyó haber llegado a la India, pero desembarcó en la isla de:', 'Guanahani', 'América', 'Cuba', 'México', 75, '2', '2021-12-27 22:23:25', '2021-12-29 13:50:34'),
+(9, 2, 'Astrónomo y matemático alemán. Conocido por sus obra \"Leyes sobre el movimiento de los planetas en su órbita alrededor del Sol\"', 'Johannes Kepler', 'Tycho Brahe', 'Galileo Galilei', 'Nicolás Copérnico', 65, '2', '2021-12-27 22:55:06', '2021-12-29 13:54:10'),
+(10, 8, 'El teorema \"En todo triángulo rectángulo el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos\" pertenece a:', 'Pitágoras', 'Heráclito', 'Euclídes', 'Arquímides', 60, '2', '2021-12-28 20:26:20', '2021-12-29 13:49:17'),
+(11, 4, '¿Cuál de las siguientes ciudades está situada a mayor altitud?', 'La Rinconada, Perú.', 'Wenquan, China.', 'Komic, India', 'Lungring, China', 60, '2', '2021-12-29 13:38:58', '2021-12-29 13:48:23');
 
 -- --------------------------------------------------------
 
@@ -177,16 +200,16 @@ CREATE TABLE `trivia` (
   `opcion_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `opcion_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `opcion_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `categoria` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_ingreso` timestamp NOT NULL DEFAULT current_timestamp(),
-  `fecha_modificacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `categoria` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `trivia`
 --
 
-INSERT INTO `trivia` (`id`, `pregunta`, `respuesta`, `opcion_1`, `opcion_2`, `opcion_3`, `categoria`, `fecha_ingreso`, `fecha_modificacion`) VALUES
+INSERT INTO `trivia` (`id`, `pregunta`, `respuesta`, `opcion_1`, `opcion_2`, `opcion_3`, `categoria`, `created_at`, `updated_at`) VALUES
 (1, '¿Cuál es la velocidad del sonido', '1.200 kilómetros por hora', '120 kilómetros por hora', '400 kilómetros por hora', '700 kilómetros por hora', '0', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
 (2, '¿Cuál es la mejor manera de saber los años de un árbol?', 'Contando sus anillos internos', 'Midiendo el ancho del árbol según su especie', 'Contando la cantidade de ramas y hojas', 'Midiendo su altura', '0', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
 (3, '¿De qué está compuesto mayormente el Sol?', 'Gas', 'Lava líquida', 'Hierro derretido', 'Roca', '0', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
@@ -232,7 +255,8 @@ INSERT INTO `trivia` (`id`, `pregunta`, `respuesta`, `opcion_1`, `opcion_2`, `op
 (43, '¿Quién es el padrino de la música Soul?', 'James Brown', 'Curtis Mayfield', 'Michael Jackson', 'Labi Siffre', '3', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
 (44, '¿Cuántas estrellas hay en el sistema solar?', '1', '437.352 contadas hasta ahora', '3', '8', '0', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
 (45, 'Según Sigmund Freud, el yo, el super yo y ¿qué otra instancia estructuran el psiquismo?', 'Ello', 'Irracionalidad', 'Inconsciente', 'Líbido', '0', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
-(46, '¿A quién pertenece la locución: Veni, vidi, vici?', 'Julio Cesar', 'César Augusto', 'Tiberio', 'Marco Antonio', '1', '2021-12-22 13:03:11', '2021-12-22 13:03:11');
+(46, '¿A quién pertenece la locución: Veni, vidi, vici?', 'Julio Cesar', 'César Augusto', 'Tiberio', 'Marco Antonio', '1', '2021-12-22 13:03:11', '2021-12-22 13:03:11'),
+(47, 'La crisis económica también conocida como \"La Gran Depresión\" se desató en:', '1919', '1938', '1929', '1892', '0', '2021-12-29 14:03:38', '2021-12-29 14:03:38');
 
 -- --------------------------------------------------------
 
@@ -262,7 +286,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (4, 'CumbiLaChancha', 'chancha@chancha.com', NULL, '$2y$10$J7eY02kIzjeSQqtEX4w3GO3C7.3v8qKQUYRHiI6gEzFAQCh1PQkD2', NULL, '2021-12-23 14:18:58', '2021-12-23 14:18:58'),
 (5, 'rodrigo', 'rodrigo@rodrigo.com', NULL, '$2y$10$ZkPn9lsJcq/EIOkC8Mg0tOx1/l/bzRDORrBkxMmPc0tdfU1GdWgy.', NULL, '2021-12-23 17:35:08', '2021-12-23 17:35:08'),
 (6, 'rosa', 'rosa@rosa.com', NULL, '$2y$10$ts9DegRQ1M.8.WhwKfVjaezDvsx2JFrhz/u9C6elyT27gqGJOSmJi', NULL, '2021-12-27 15:45:01', '2021-12-27 15:45:01'),
-(7, 'BoldoLaHierbaSuperior', 'boldo@boldo.com', NULL, '$2y$10$XZ8F9gqcra6RXfTD5IFUOuhS5eDrK1mBrwu7c0NghGLohIR4eBh2W', NULL, '2021-12-27 22:01:16', '2021-12-27 22:01:16');
+(7, 'BoldoLaHierbaSuperior', 'boldo@boldo.com', NULL, '$2y$10$XZ8F9gqcra6RXfTD5IFUOuhS5eDrK1mBrwu7c0NghGLohIR4eBh2W', NULL, '2021-12-27 22:01:16', '2021-12-27 22:01:16'),
+(8, 'Gatona', 'gatona@gatona.com', NULL, '$2y$10$894kKpC0qoWlFTd6izmQ3OkBUj9/S.7DPfzzHrCiCgyWbavcESjtC', NULL, '2021-12-28 20:19:28', '2021-12-28 20:19:28');
 
 --
 -- Índices para tablas volcadas
@@ -348,25 +373,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `podio`
 --
 ALTER TABLE `podio`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `socials`
 --
 ALTER TABLE `socials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `trivia`
 --
 ALTER TABLE `trivia`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

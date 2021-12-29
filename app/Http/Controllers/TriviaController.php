@@ -37,6 +37,7 @@ class TriviaController extends Controller
                 //Se le comparte una pregunta de Socials para que responda y evalúe.
 
                 $pregunta = Social::select('id','user_id','pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3', 'puntuacion')
+                ->where('categoria','=','2')
                 ->inRandomOrder()
                 ->first()
                 ->toArray();
