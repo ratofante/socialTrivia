@@ -13,7 +13,12 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionAbout">
         <div class="accordion-body">
-            Social Trivia es una app en la cual puedes <b>(1)</b> Participar en la trivia contestando 10 preguntas al azar, <b>(2)</b> Si obtienes un puntaje alto, puedes compartir tus conocimientos sumando una pregunta a la Trivia. <b>(3)</b> Tus preguntas serán votadas por otros participantes, si obtiene suficientes puntos, ingresa oficialmente como parte de la trivia.
+            Social Trivia es una app en la cual puedes
+            <ul class="list-group">
+                <li class="list-group-item"><b>(1)</b> Participar en la trivia contestando 10 preguntas al azar</li>
+                <li class="list-group-item"><b>(2)</b> Si obtienes un puntaje alto, puedes compartir tus conocimientos sumando una pregunta a la Trivia. </li>
+                <li class="list-group-item"> <b>(3)</b> Tus preguntas serán votadas por otros participantes, si obtiene suficientes puntos, ingresa oficialmente como parte de la trivia.</li>
+            </ul>
         </div>
       </div>
     </div>

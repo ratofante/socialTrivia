@@ -89,7 +89,7 @@
     <footer>
             <div class="card">
                 <div class="card-footer text-muted">
-                    Footer
+                    <a href="https://github.com/ratofante/socialTrivia" class="git-link"><img src="/images/github.svg" alt="github-icon"></a>
                 </div>
             </div>
     </footer>

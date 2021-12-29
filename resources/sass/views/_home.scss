@@ -37,13 +37,14 @@
                 width: fit-content;
                 border-radius: 4px;
             }
-            p {margin-bottom: 2rem;}
+            p {margin-bottom: 2rem; text-align:center;}
             p span.user-name {
                 color: #4d739b;
                 font-weight: bold;
             }
             p.score {
                 font-weight: bold;
+                text-align: center;
                 color:rgb(97, 56, 28);
             }
             p span.puntaje {

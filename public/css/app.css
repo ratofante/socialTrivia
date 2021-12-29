@@ -139,6 +139,7 @@ footer {
 }
 #homePanel .carousel-inner .carousel-item p {
   margin-bottom: 2rem;
+  text-align: center;
 }
 #homePanel .carousel-inner .carousel-item p span.user-name {
   color: #4d739b;
@@ -146,6 +147,7 @@ footer {
 }
 #homePanel .carousel-inner .carousel-item p.score {
   font-weight: bold;
+  text-align: center;
   color: #61381c;
 }
 #homePanel .carousel-inner .carousel-item p span.puntaje {
