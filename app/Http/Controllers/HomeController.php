@@ -32,6 +32,7 @@ class HomeController extends Controller
             ->first()
             ->toArray();
         $puntuacionAlta = Social::select('pregunta', 'puntuacion')
+            ->where('categoria', '=', '2')
             ->orderBy('puntuacion', 'desc')
             ->orderBy('created_at', 'asc')
             ->first()

@@ -34,6 +34,7 @@ class BonusController extends Controller
 
                     $trivia['evaluacion'] = [];
                     array_push($trivia['evaluacion'], $registro);
+                    array_push($trivia['sumario'], $registro);
                 }
             }
         }
@@ -63,15 +64,27 @@ class BonusController extends Controller
         //Chequeamos puntuación y cambio de categoria
         if($bonus['puntuacion'] === 100)
         {
-            var_dump($bonus);
+            //var_dump($bonus);
             Social::where('id', $bonus['id'])
                 ->update(['categoria' => '1']);
+
+            //Actualmente, existe el siguiente problema:
+            // Tomo los datos de $bonus pero $bonus tiene las respuestas random!
+            // Entonces opciones[0] no corresponde necesariamente a la respuesta.
+            // Habría que simplemente hacer una query que saque los datos con la ID,
+            // pasarle los datos ya ordenados (o sin desordenar).
+
+            //ESTO DEBERIA RESOLVERLO, pero me falta chequear.
+            $ingresoTrivia = Social::select('pregunta', 'respuesta', 'opcion_1', 'opcion_2','opcion_3')
+                ->where('id','=',$bonus['id'])
+                ->get()
+                ->toArray();
             Trivia::create([
-                'pregunta' => $bonus['pregunta'],
-                'respuesta' => $bonus['opciones'][0]['texto'],
-                'opcion_1' => $bonus['opciones'][1]['texto'],
-                'opcion_2' => $bonus['opciones'][2]['texto'],
-                'opcion_3' => $bonus['opciones'][3]['texto']
+                'pregunta' => $ingresoTrivia['pregunta'],
+                'respuesta' => $ingresoTrivia['respuesta'],
+                'opcion_1' => $ingresoTrivia['opcion_1'],
+                'opcion_2' => $ingresoTrivia['opcion_2'],
+                'opcion_3' => $ingresoTrivia['opcion_3']
             ]);
         }
         elseif($bonus['puntuacion'] === 0)

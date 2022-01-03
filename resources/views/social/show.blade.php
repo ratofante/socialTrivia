@@ -18,7 +18,7 @@
             @else
                 <tr class="bg-custom-light">
             @endif
-                    <td>{{ $pregunta->pregunta }} {{ $pregunta->categoria }}</td>
+                    <td>{{ $pregunta->pregunta }}</td>
                     <td class="text-center"> {{ $pregunta->puntuacion }}</td>
                     <td class="text-center"> {{ $pregunta->created_at }}</td>
                 </tr>

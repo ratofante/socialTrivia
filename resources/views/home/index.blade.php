@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h1 class="welcome">Bienvenido @auth {{  Auth::user()->name }} !@else Señor desconocido !@endauth</h1>
+        <h1 class="welcome">Bienvenido/a @auth {{  Auth::user()->name }} !@else Señor/a desconocido/a !@endauth</h1>
     </div>
     <div class="container">
         <div class="row">
@@ -118,14 +118,14 @@
                                     <p class="score">Puntuación: <span class="puntaje">{{ $homePanel['puntuacionAlta']['puntuacion'] }}</span></p>
                                 </div>
                             </div>
-                            <button class="carousel-control-prev d-none d-lg-inline" type="button" data-bs-target="#homePanel" data-bs-slide="prev">
+                            <!--button class="carousel-control-prev d-none d-lg-inline" type="button" data-bs-target="#homePanel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next d-none d-lg-inline" type="button" data-bs-target="#homePanel" data-bs-slide="next">
+                            </!--button>
+                            <button-- class="carousel-control-next d-none d-lg-inline" type="button" data-bs-target="#homePanel" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
-                              </button>
+                              </button-->
                         </div>
             </div>
         </div>
